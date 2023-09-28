@@ -1,5 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
+import IsAuth from '@/components/IsAuth'
 import { Toaster } from 'react-hot-toast'
 import { Analytics } from '@vercel/analytics/react'
 import QueryProvider from '@/components/QueryProvider'
@@ -22,7 +23,9 @@ export default function RootLayout({
           reverseOrder={false} />
         <Analytics />
         <QueryProvider>
-          {children}
+          <IsAuth>
+            {children}
+          </IsAuth>
         </QueryProvider>
       </body>
     </html>
