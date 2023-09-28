@@ -7,6 +7,7 @@ import { signup } from '../controllers/signup.controller'
 import { logout } from '../controllers/logout.controller'
 import { sendOtp } from '../controllers/send-otp.controller'
 import refreshToken from '../controllers/refresh.controller'
+import deleteAccount from '../controllers/delete.controller'
 import { verify } from '../controllers/reset-pswd.controller'
 import verifyUser from '../middlewares/verifyUser.middleware'
 import { passport } from '../controllers/google/callback.google'
@@ -64,5 +65,6 @@ router.post('/req-otp', limit({
 }), sendOtp)
 
 router.get('/isAuth', verifyUser, isAuth)
+router.post('/delate', verifyUser, deleteAccount)
 
 export default router
