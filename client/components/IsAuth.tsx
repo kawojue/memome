@@ -19,6 +19,11 @@ export default function RootLayout({
                     if (
                         (pathname === '/') || (pathname === '/login') || (pathname || '/signup')
                         || (pathname === '/password/verify') || (pathname === '/password/reset')
+                        || (
+                            (pathname !== '/profile') &&
+                            (pathname !== '/account') &&
+                            (pathname !== '/settings')
+                        )
                     ) {
                         router.push('/profile')
                     }
@@ -28,7 +33,7 @@ export default function RootLayout({
                         if (
                             (pathname === '/profile') ||
                             (pathname === '/account') ||
-                            (pathname || '/settings')
+                            (pathname === '/settings')
                         ) {
                             router.push('/login')
                         }
