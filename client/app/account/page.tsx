@@ -67,10 +67,10 @@ const page = () => {
                 return (
                     <>
                         <DeleteAccount
+                            data={data}
+                            title='Account Deletion'
                             get={deleteAccountModal}
                             set={setDeleteAccountModal}
-                            title='Account Deletion'
-                            data={data}
                         />
                         <main className='profile'>
                             <article className="profile-header">
