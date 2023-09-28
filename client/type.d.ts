@@ -291,3 +291,9 @@ interface PollOptionProps {
     poll: MyPoll | undefined,
     optionPercentage: number,
 }
+
+interface MenuItem {
+    Icon: IconType
+    content: string
+    handler: () => void
+}
