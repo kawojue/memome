@@ -1,8 +1,7 @@
 "use client"
 import { AxiosError } from 'axios'
+import MenuItem from '../MenuItem'
 import axios from '@/app/api/axios'
-import { IconType } from 'react-icons'
-import { poppins } from '@/public/fonts/f'
 import {
     CiShare1, BiTimer, MdOutlineCancel,
     MdOutlinePrivacyTip, RiDeleteBin7Line,
@@ -12,37 +11,6 @@ import { Fragment, FC, useState } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { useModalStore, usePoll } from '@/utils/store'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
-
-const Menus: FC<{
-    Icon: IconType
-    content: string
-    handler: () => void
-}> = ({ Icon, content, handler }) => {
-    return (
-        <div className="px-1 py-0.5">
-            <Menu.Item>
-                {({ active }) => (
-                    <button
-                        onClick={() => handler()}
-                        className={`${poppins.className} ${active ? 'bg-clr-1 rounded-md text-clr-0' : 'font-medium'} w-full items-center flex gap-3 px-2 py-0.5`}>
-                        {active ? (
-                            <Icon
-                                aria-hidden='true'
-                                className='text-clr-0'
-                            />
-                        ) : (
-                            <Icon
-                                aria-hidden='true'
-                                className='text-clr-1'
-                            />
-                        )}
-                        {content}
-                    </button>
-                )}
-            </Menu.Item>
-        </div>
-    )
-}
 
 const PollMenu: FC<PollMenu> = ({ poll, polls, setPolls, isOwner }) => {
     const { setTotalPolls } = usePoll()
@@ -120,28 +88,28 @@ const PollMenu: FC<PollMenu> = ({ poll, polls, setPolls, isOwner }) => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95">
                     <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-clr-11 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <Menus
+                        <MenuItem
                             Icon={CiShare1}
                             content='Share'
                             handler={() => setSharePollModal(true)}
                         />
                         {isOwner && <>
-                            <Menus
+                            <MenuItem
                                 Icon={MdOutlinePrivacyTip}
                                 content={`${visible === true ? 'Private' : 'Public'} Poll`}
                                 handler={async () => await handleEdit('visiblity', poll.id)}
                             />
-                            <Menus
+                            <MenuItem
                                 Icon={MdOutlineCancel}
                                 handler={async () => await handleEdit('active', poll.id)}
                                 content={`${activePoll === true ? 'Active' : 'Suspended'} Poll`}
                             />
-                            <Menus
+                            <MenuItem
                                 Icon={BiTimer}
                                 content='Set Expiry'
                                 handler={() => setPollExpiryModal(true)}
                             />
-                            <Menus
+                            <MenuItem
                                 content='Delete'
                                 Icon={RiDeleteBin7Line}
                                 handler={async () => await handleDelete(poll.id)}
