@@ -73,12 +73,14 @@ const useModalStore = create<ModalStates>()((set) => ({
     shareLinkModal: false,
     createPollModal: false,
     pollExpiryModal: false,
+    deleteAccountModal: false,
     setLoading: (loading) => set({ loading }),
     setAvatarModal: (avatarModal) => set({ avatarModal }),
     setShareLinkModal: (shareLinkModal) => set({ shareLinkModal }),
     setSharePollModal: (sharePollModal) => set({ sharePollModal }),
     setCreatePollModal: (createPollModal) => set({ createPollModal }),
     setPollExpiryModal: (pollExpiryModal) => set({ pollExpiryModal }),
+    setDeleteAccountModal: (deleteAccountModal) => set({ deleteAccountModal }),
 }))
 
 
