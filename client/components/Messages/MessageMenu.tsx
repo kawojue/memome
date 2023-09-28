@@ -1,5 +1,5 @@
+import MenuItem from '../MenuItem'
 import axios from '@/app/api/axios'
-import { poppins } from '@/public/fonts/f'
 import throwError from '@/utils/throwError'
 import { Fragment, FC, useState } from 'react'
 import { useMessageStore } from '@/utils/store'
@@ -51,50 +51,16 @@ const MessageMenu: FC<MessageMenu> = ({ message, messages, setMessages }) => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95">
                     <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-clr-11 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <div className="px-1 py-1">
-                            <Menu.Item>
-                                {({ active }) => (
-                                    <button
-                                        onClick={async () => await handleVisibility(message.id)}
-                                        className={`${poppins.className} ${active ? 'bg-clr-1 rounded-md text-clr-0' : 'font-medium'} w-full items-center flex gap-3 px-2 py-1`}>
-                                        {active ? (
-                                            <MdOutlinePrivacyTip
-                                                aria-hidden='true'
-                                                className='text-clr-0'
-                                            />
-                                        ) : (
-                                            <MdOutlinePrivacyTip
-                                                aria-hidden='true'
-                                                className='text-clr-1'
-                                            />
-                                        )}
-                                        {visible === true ? 'Private' : 'Public'} Message
-                                    </button>
-                                )}
-                            </Menu.Item>
-                        </div>
-                        <div className="px-1 py-1">
-                            <Menu.Item>
-                                {({ active }) => (
-                                    <button
-                                        onClick={async () => await handleDelete(message.id)}
-                                        className={`${poppins.className} ${active ? 'bg-clr-1 rounded-md text-clr-0' : 'font-medium'} w-full items-center flex gap-3 px-2 py-1`}>
-                                        {active ? (
-                                            <RiDeleteBin7Line
-                                                aria-hidden='true'
-                                                className='text-clr-0'
-                                            />
-                                        ) : (
-                                            <RiDeleteBin7Line
-                                                aria-hidden='true'
-                                                className='text-clr-1'
-                                            />
-                                        )}
-                                        Delete
-                                    </button>
-                                )}
-                            </Menu.Item>
-                        </div>
+                        <MenuItem
+                            Icon={MdOutlinePrivacyTip}
+                            handler={async () => await handleVisibility(message.id)}
+                            content={`${visible === true ? 'Private' : 'Public'} Message`}
+                        />
+                        <MenuItem
+                            content={`Delete`}
+                            Icon={RiDeleteBin7Line}
+                            handler={async () => await handleDelete(message.id)}
+                        />
                     </Menu.Items>
                 </Transition>
             </Menu>
