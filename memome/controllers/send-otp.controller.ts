@@ -25,6 +25,11 @@ const sendOtp = expressAsyncHandler(async (req: Request, res: Response) => {
         return
     }
 
+    if (user.auth_method !== 'local') {
+        sendError(res, StatusCodes.BadRequest, `Login with ${user.auth_method} instead.`)
+        return
+    }
+
     if (user.totp_expiry) {
         if (Date.now() > user.totp_expiry) {
             sendError(res, StatusCodes.BadRequest, 'Request after 30 minutes.')
