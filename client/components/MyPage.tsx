@@ -45,7 +45,7 @@ const MyPage: FC<MyPage> = ({ children, param }) => {
             }).catch((err: AxiosError) => {
                 const statusCodes: unknown = err.response?.status
                 if (statusCodes === 403) {
-                    router.push('/login')
+                    // router.push('/login')
                 } else {
                     throwError(err)
                 }
