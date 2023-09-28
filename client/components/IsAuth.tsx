@@ -17,9 +17,11 @@ export default function RootLayout({
             await axios.get('/auth/isAuth')
                 .then((res: AxiosResponse) => {
                     if (
-                        (pathname === '/') || (pathname === '/login') || (pathname || '/signup')
-                        || (pathname === '/password/verify') || (pathname === '/password/reset')
-                        || (
+                        (
+                            (pathname === '/') || (pathname === '/login') || (pathname || '/signup')
+                            || (pathname === '/password/verify') || (pathname === '/password/reset')
+                        )
+                        && (
                             (pathname !== '/profile') &&
                             (pathname !== '/account') &&
                             (pathname !== '/settings')
