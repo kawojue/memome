@@ -235,24 +235,36 @@ table, td { color: #000000; } @media (max-width: 480px) { #u_content_heading_2 .
 }
 
 // const sendMail = async () => {
-//   const accounts = await prisma.accounts.findMany({
-//     where: {
-//       verified: true
-//     },
-//     include: {
-//       user: {
-//         select: {
-//           email: true,
-//           username: true
-//         }
-//       }
-//     }
-//   })
+//   const ids: string[] = []
 
-//   for (const account of accounts) {
+//   for (const idx of ids) {
 //     try {
-//       await verification(account.user.username, account.user.email)
-//       console.log('Success')
+//       const account = await prisma.accounts.findUnique({
+//         where: {
+//           userId: idx
+//         },
+//         include: {
+//           user: {
+//             select: {
+//               email: true,
+//               username: true
+//             }
+//           }
+//         }
+//       })
+
+//       await prisma.accounts.update({
+//         where: {
+//           userId: idx
+//         },
+//         data: {
+//           verified: true
+//         }
+//       })
+
+//       await verification(account?.user.username!, account?.user.email!)
+
+//       console.log('Success!')
 //     } catch (err) {
 //       console.log(err)
 //     }
