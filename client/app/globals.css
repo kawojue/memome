@@ -59,6 +59,12 @@ body {
     @apply px-7 py-2 flex justify-between items-center bg-clr-14 w-full border-t-[0.75px]
 }
 
+.plus-btn {
+    @apply fixed z-[999] bottom-14 right-9 p-2 bg-clr-1 cursor-pointer rounded-full text-xl lg:text-3xl md:text-2xl w-fit;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    animation: bounce 2s ease-in-out infinite;
+}
+
 .plus-icon {
     @apply text-clr-0;
 }

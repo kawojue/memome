@@ -64,13 +64,9 @@ const Profile: FC<IProfile> = ({ user, pathName, username }) => {
             {pathName === 'main' &&
                 <>
                     <button
-                        className='fixed z-[999] bottom-14 right-9 p-2 bg-clr-1 cursor-pointer rounded-full text-xl lg:text-3xl md:text-2xl'
-                        style={{
-                            boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
-                            animation: 'bounce 2s ease-in-out infinite'
-                        }}
+                        className='plus-btn'
                         onClick={() => setPlusClicked((prev) => !prev)}>
-                        <AiOutlinePlus className={`plus-icon ${plusClicked && 'active'} w-full`} />
+                        <AiOutlinePlus className={`plus-icon ${plusClicked ? 'active' : ''} w-full`} />
                     </button>
                     <div className={`${plusClicked ? 'show-action' : ''} action`}>
                         <button
@@ -78,7 +74,7 @@ const Profile: FC<IProfile> = ({ user, pathName, username }) => {
                                 setShareLinkModal(true)
                                 setPlusClicked((prev) => !prev)
                             }}
-                            className={`${poppins.className} flex gap-3 items-center tracking-wide text-clr-2 hover:text-clr-9 trans w-full`}>
+                            className={`${poppins.className} flex gap-3 items-center tracking-wide trans bg-clr-6 text-clr-13 px-2 py-1 rounded-md`}>
                             <span >
                                 Anonymous Link
                             </span>
@@ -89,7 +85,7 @@ const Profile: FC<IProfile> = ({ user, pathName, username }) => {
                                 setCreatePollModal(true)
                                 setPlusClicked((prev) => !prev)
                             }}
-                            className={`${poppins.className} flex gap-3 items-center tracking-wide text-clr-2 hover:text-clr-9 trans w-full`}>
+                            className={`${poppins.className} flex gap-3 items-center tracking-wide bg-clr-6 text-clr-13 trans px-2 py-1 rounded-md`}>
                             <span>
                                 Host a Poll
                             </span>
@@ -204,12 +200,12 @@ const Profile: FC<IProfile> = ({ user, pathName, username }) => {
                 </article>
                 <article className='flex gap-9 mt-5'>
                     <Link
-                        href={`/${pathName === 'main' ? 'profile': username}?tab=messages`}
+                        href={`/${pathName === 'main' ? 'profile' : username}?tab=messages`}
                         className={`${questrial.className} tab ${activeTab === 'messages' && 'active'}`}>
                         Messages
                     </Link>
                     <Link
-                        href={`/${pathName === 'main' ? 'profile': username}?tab=polls`}
+                        href={`/${pathName === 'main' ? 'profile' : username}?tab=polls`}
                         className={`${questrial.className} tab ${activeTab === 'polls' && 'active'}`}>
                         Polls
                     </Link>
