@@ -175,7 +175,7 @@ interface ModalProps extends State<boolean> {
 }
 
 interface ModalComponent extends State<boolean> {
-    data?: T,
+    data?: T
     title?: string
 }
 
@@ -240,7 +240,7 @@ interface MyPoll {
     votedOption: string
     votes?: {
         id: string
-        userId: string,
+        userId: string
         optionId: string
     }[]
 }
@@ -253,7 +253,7 @@ interface MyPollOption {
 
 interface PollParams {
     params: {
-        createdById: string,
+        createdById: string
         pollId: string
     }
 }
@@ -265,15 +265,15 @@ interface Login extends PathName {
 }
 
 interface PollMenu {
-    poll: MyPoll,
-    polls: MyPoll[],
-    isOwner: boolean,
+    poll: MyPoll
+    polls: MyPoll[]
+    isOwner: boolean
     setPolls: Dispatch<SetStateAction<MyPoll[]>>
 }
 
 interface MessageMenu {
-    message: MessageStates,
-    messages: MessageStates[],
+    message: MessageStates
+    messages: MessageStates[]
     setMessages: Dispatch<SetStateAction<MessageStates[]>>
 }
 
@@ -285,11 +285,11 @@ interface ListBox {
 }
 
 interface PollOptionProps {
-    option: MyPollOption,
-    expired: () => boolean,
-    notValidToVote: boolean,
-    poll: MyPoll | undefined,
-    optionPercentage: number,
+    option: MyPollOption
+    expired: () => boolean
+    notValidToVote: boolean
+    poll: MyPoll | undefined
+    optionPercentage: number
 }
 
 interface MenuItem {
