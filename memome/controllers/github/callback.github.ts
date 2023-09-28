@@ -48,7 +48,9 @@ const githubAuthCallback = expressAsyncHanlder(async (req: Request, res: Respons
     const ipAddress = req.socket.remoteAddress?.split(":")[3]
 
     let user = await prisma.users.findUnique({
-        where: { email }
+        where: {
+            provider_id: String(userData.id)
+        }
     })
 
     if (!user) {
