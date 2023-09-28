@@ -74,7 +74,7 @@ const Profile: FC<IProfile> = ({ user, pathName, username }) => {
                                 setShareLinkModal(true)
                                 setPlusClicked((prev) => !prev)
                             }}
-                            className={`${poppins.className} flex gap-3 items-center tracking-wide trans bg-clr-6 text-clr-13 px-2 py-1 rounded-md`}>
+                            className={`${poppins.className} flex gap-3 items-center tracking-wide trans bg-clr-16 text-clr-0 px-2 py-1 rounded-md`}>
                             <span >
                                 Anonymous Link
                             </span>
@@ -85,7 +85,7 @@ const Profile: FC<IProfile> = ({ user, pathName, username }) => {
                                 setCreatePollModal(true)
                                 setPlusClicked((prev) => !prev)
                             }}
-                            className={`${poppins.className} flex gap-3 items-center tracking-wide bg-clr-6 text-clr-13 trans px-2 py-1 rounded-md`}>
+                            className={`${poppins.className} flex gap-3 items-center tracking-wide bg-clr-16 text-clr-0 trans px-2 py-1 rounded-md`}>
                             <span>
                                 Host a Poll
                             </span>
@@ -95,7 +95,7 @@ const Profile: FC<IProfile> = ({ user, pathName, username }) => {
                 </>}
             <article className="profile-header">
                 <h1 className='text-2xl text-clr-13 font-semibold tracking-wide md:text-3xl'>
-                    {pathName === 'main' ? "Profile" : "User Profile"}
+                    {pathName === 'main' ? "Your Profile" : "User Profile"}
                 </h1>
             </article>
             <section className="profile-cards">
