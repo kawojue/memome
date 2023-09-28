@@ -65,6 +65,6 @@ router.post('/req-otp', limit({
 }), sendOtp)
 
 router.get('/isAuth', verifyUser, isAuth)
-router.post('/delate', verifyUser, deleteAccount)
+router.post('/delete', verifyUser, deleteAccount)
 
 export default router
