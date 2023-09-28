@@ -73,6 +73,7 @@ interface UserStoreStates {
     email: string
     userId: string
     loading: boolean
+    username: string
     password: string
     disabled: boolean
     password2: string
@@ -90,6 +91,7 @@ interface UserStoreStates {
     setUserId: (userId: string) => void
     setLoading: (loading: boolean) => void
     setPassword: (password: string) => void
+    setUsername: (username: string) => void
     setDisabled: (disabled: boolean) => void
     setAvatar: (avatar: File | null) => void
     setPassword2: (password2: string) => void
