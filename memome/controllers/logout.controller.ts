@@ -4,9 +4,15 @@ import StatusCodes from '../enums/StatusCodes'
 import expressAsyncHandler from 'express-async-handler'
 
 const clear = (req: Request, res: Response) => {
+    const isProd = process.env.NODE_ENV === 'production'
+
     const cookieNames = Object.keys(req.cookies)
     for (const cookie of cookieNames) {
-        res.clearCookie(cookie)
+        res.clearCookie(cookie, {
+            domain: isProd ? 'memome.one' : undefined,
+            secure: isProd,
+            sameSite: isProd ? 'none' : 'strict',
+        })
     }
 
     res.sendStatus(StatusCodes.NoContent)
