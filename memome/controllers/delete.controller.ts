@@ -15,9 +15,11 @@ const deleteAccount = expressAsyncHandler(async (req: Request, res: Response) =>
             id: userId
         },
         include: {
-            Account: true,
-            Profile: true,
-            Settings: true,
+            Profile: {
+                select: {
+                    avatar: true
+                }
+            }
         }
     })
 
@@ -119,10 +121,6 @@ const deleteAccount = expressAsyncHandler(async (req: Request, res: Response) =>
     })
 
     await prisma.settings.delete({
-        where: { userId }
-    })
-
-    await prisma.accounts.delete({
         where: { userId }
     })
 
