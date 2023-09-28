@@ -64,7 +64,9 @@ router.post('/req-otp', limit({
     msg: 'Try again later..'
 }), sendOtp)
 
-router.get('/isAuth', verifyUser, isAuth)
-router.post('/delete', verifyUser, deleteAccount)
+router.use(verifyUser)
+
+router.get('/isAuth', isAuth)
+router.post('/delete', deleteAccount)
 
 export default router
