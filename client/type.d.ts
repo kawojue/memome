@@ -138,12 +138,14 @@ interface ModalStates {
     sharePollModal: boolean
     createPollModal: boolean
     pollExpiryModal: boolean
+    deleteAccountModal: boolean
     setLoading: (loading: boolean) => void
     setAvatarModal: (avatarModal: boolean) => void
     setShareLinkModal: (shareLinkModal: boolean) => void
     setSharePollModal: (sharePollModal: boolean) => void
     setCreatePollModal: (createPollModal: boolean) => void
     setPollExpiryModal: (pollExpiryModal: boolean) => void
+    setDeleteAccountModal: (deleteAccountModal: boolean) => void
 }
 
 interface MediaUploadProps extends State<File[] | null> {
