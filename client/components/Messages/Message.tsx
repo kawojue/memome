@@ -1,71 +1,46 @@
+"use client"
 import Image from 'next/image'
-import { FC, useRef } from 'react'
 import html2Canvas from 'html2canvas'
 import download from '@/utils/download'
 import { prompt } from '@/public/fonts/f'
 import { getPeriod } from '@/utils/period'
+import { FC, useRef, useState } from 'react'
 import { BsDownload } from '@/public/icons/ico'
 
 const Message: FC<{ message: MessageStates }> = ({ message }) => {
     const captureDivRef = useRef<HTMLDivElement>(null)
+    const [downloadBtnClicked, setDownloadBtnClicked] = useState(false)
 
-    function downloadHTMLTemplate(id: string, messageTexts: string) {
-        //         const containerStyles = `
-        //     display: flex;
-        //     justify-content: center;
-        //     align-items: center;
-        //     width: 100%;
-        //     min-height: 220px;
-        //     border-radius: 30px;
-        //     padding: 3px;
-        //     background-color: #yourBackgroundColor;
-        //     box-shadow: 10px 10px 18px 0 rgba(0, 0, 0, 0.3),
-        //                 inset -10px -10px 18px 0 rgba(0, 0, 0, 0.3),
-        //                 inset 10px 10px 18px 0 rgba(255, 255, 255, 0.2);
-        //   `
+    const downloadHTMLTemplate = async (id: string) => {
+        setDownloadBtnClicked(true)
 
-        //         const htmlContent = `
-        //     <div style="${containerStyles}">
-        //       <div class="your-prompt-class">${messageTexts}</div>
-        //       <span style="position: absolute; top: 2px; left: 3px; font-size: 12px; color: #yourTextColor;">
-        //         ${getPeriod(message.date)} ago
-        //       </span>
-        //     </div>
-        //   `
+        const divToCapture = await captureDivRef.current
 
-        //         const blob = new Blob([htmlContent], { type: 'text/html' })
+        if (!divToCapture) return
 
-        //         const canvas = document.createElement('canvas')
-        //         const ctx = canvas.getContext('2d')
-        //         const img = new Image()
-        //         img.src = URL.createObjectURL(blob)
-
-        //         img.onload = () => {
-        //             canvas.width = img.width
-        //             canvas.height = img.height
-        //             ctx.drawImage(img, 0, 0)
-        //             canvas.toBlob((pngBlob) => {
-        //                 const downloadLink = document.createElement('a')
-        //                 downloadLink.href = URL.createObjectURL(pngBlob)
-        //                 downloadLink.download = `memome_${id}.png`
-        //                 downloadLink.click()
-        //             }, 'image/png')
-        //         }
+        await html2Canvas(divToCapture)
+            .then((canvas) => {
+                const dataURL = canvas.toDataURL('image/png')
+                const downloadLink = document.createElement('a')
+                downloadLink.href = dataURL
+                downloadLink.download = `memome_${id}.png`
+                downloadLink.click()
+            }).finally(() => setDownloadBtnClicked(false))
     }
-
 
     return (
         <>
             <article
-                className={` ${message.files.length === 0 && 'flex items-center justify-center'} relative sm:min-h-[235px] md:min-h-[250px] min-h-[220px] rounded-[30px] p-3 bg-clr-11 max-w-[300px] w-[90vw]`}
+                ref={captureDivRef}
+                className={`${message.files.length === 0 && 'flex items-center justify-center'} relative sm:min-h-[235px] md:min-h-[250px] min-h-[220px] rounded-[30px] p-3 bg-clr-11 max-w-[300px] w-[90vw]`}
                 style={{
-                    boxShadow: `10px 10px 18px 0 rgba(0, 0, 0, 0.3), inset -10px -10px 18px 0 rgba(0, 0, 0, 0.3), inset 10px 10px 18px 0 rgba(255, 255, 255, 0.2)`
+                    boxShadow: downloadBtnClicked ?
+                        'none' : `10px 10px 18px 0 rgba(0, 0, 0, 0.3), inset -10px -10px 18px 0 rgba(0, 0, 0, 0.3), inset 10px 10px 18px 0 rgba(255, 255, 255, 0.2)`
                 }}>
                 {message.files.length === 0 ?
                     <>
                         {message.texts &&
                             <div
-                                ref={captureDivRef}
                                 className={`${prompt.className} text- [1.2em] text-center text-clr-13 mt-2`}
                                 style={{
                                     fontSize: '1.2em',
@@ -73,11 +48,11 @@ const Message: FC<{ message: MessageStates }> = ({ message }) => {
                                 }}
                                 dangerouslySetInnerHTML={{ __html: message.texts }}
                             />}
-                        {/* <button
-                            onClick={() => downloadHTMLTemplate(message.id, message.texts as string)}
+                        <button
+                            onClick={async () => await downloadHTMLTemplate(message.id)}
                             className='absolute bottom-3 right-4 text-lg font-semibold text-black'>
                             <BsDownload />
-                        </button> */}
+                        </button>
                     </> :
                     <article className='h-full flex flex-col justify-between'>
                         {message.texts &&
