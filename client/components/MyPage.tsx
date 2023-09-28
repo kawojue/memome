@@ -5,13 +5,11 @@ import axios from '@/app/api/axios'
 import NavBar from '@/components/Nav'
 import { UserStore } from '@/utils/store'
 import throwError from '@/utils/throwError'
-import { useRouter } from 'next/navigation'
 import { LoaderTwo } from '@/components/Loader'
 import { useEffect, useState, FC } from 'react'
 import { AxiosError, AxiosResponse } from 'axios'
 
 const MyPage: FC<MyPage> = ({ children, param }) => {
-    const router = useRouter()
     const {
         setDisabled, setShowLevels, setBio,
         setUserId, setAllowTexts, setAllowFiles,
@@ -44,9 +42,7 @@ const MyPage: FC<MyPage> = ({ children, param }) => {
                 }
             }).catch((err: AxiosError) => {
                 const statusCodes: unknown = err.response?.status
-                if (statusCodes === 403) {
-                    // router.push('/login')
-                } else {
+                if (statusCodes !== 403) {
                     throwError(err)
                 }
             }).finally(() => setIsLoading(false))
