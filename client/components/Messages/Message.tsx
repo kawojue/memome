@@ -8,8 +8,10 @@ import { FC, useRef, useState } from 'react'
 import { BsDownload } from '@/public/icons/ico'
 
 const Message: FC<{ message: MessageStates }> = ({ message }) => {
+    const [
+        downloadBtnClicked, setDownloadBtnClicked
+    ] = useState<boolean>(false)
     const captureDivRef = useRef<HTMLDivElement>(null)
-    const [downloadBtnClicked, setDownloadBtnClicked] = useState(false)
 
     const downloadHTMLTemplate = async (id: string) => {
         setDownloadBtnClicked(true)
