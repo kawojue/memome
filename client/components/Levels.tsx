@@ -38,15 +38,17 @@ const Levels: FC<LevelProps> = ({ msgPoint, pollPoint }) => {
         <section className='flex flex-col gap-5 w-full mt-5'>
             {data?.map(({ type, level, point, total }, index) => (
                 <article key={index} className='flex flex-col gap-0.5'>
-                    <p className='flex gap-1 tracking-wide'>
-                        <span className={`${questrial.className}text-clr-13`}>
+                    <div className='flex gap-1 tracking-wide text-sm'>
+                        <span className={`${questrial.className} text-clr-4 text-xs`}>
                             {type.charAt(0).toUpperCase() + type.slice(1)}
                         </span>
                         <span>&#8226;</span>
-                        <span className={`${poppins.className} text-clr-4 font-medium`}>
+                        <span className={`${poppins.className} text-clr-4 font-medium text-base`}>
                             {level}
                         </span>
-                    </p>
+                        <span>&#8226;</span>
+                        <span class name='text-xs'>{point.toFixed(1)}</span>
+                    </div>
                     <progress
                         title={`${point.toFixed(1)}`}
                         className='level-bar'
