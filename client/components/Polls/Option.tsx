@@ -34,7 +34,7 @@ const Option: FC<PollOptionProps> = ({
     return (
         <button
             onClick={async () => vote(option?.id)}
-            className={`${prompt.className} ${notValidToVote ? 'rounded-md' : 'rounded-full'} relative h-[32px] flex items-center justify-center overflow-hidden bg-clr-1 w-full text-clr-0 disabled:bg-clr-9`}
+            className={`${prompt.className} ${notValidToVote ? 'rounded-md' : 'rounded-full'} relative h-[32px] flex items-center overflow-hidden bg-clr-1 w-full text-clr-0 disabled:bg-clr-9`}
             style={{
                 boxShadow: `rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px`
             }}
