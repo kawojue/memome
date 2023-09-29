@@ -6,6 +6,7 @@ import { EMAIL_REGEX } from '../utils/RegExp'
 import StatusCodes from '../enums/StatusCodes'
 import newLogin from '../services/new-login.mail'
 import { enc_decrypt } from '../helpers/enc_decrypt'
+import { getIpAddress } from '../utils/getIpAddress'
 import expressAsyncHandler from 'express-async-handler'
 import { sendError, sendSuccess } from '../helpers/sendRes'
 
@@ -42,13 +43,13 @@ const login = expressAsyncHandler(async (req: Request, res: Response) => {
 
     const isProd: boolean = process.env.NODE_ENV === "production"
 
+    const ipAddress: string = getIpAddress(req)
     const userAgent = req.headers['user-agent']
-    const ipAddress: string | undefined = req.socket.remoteAddress?.split(":")[3]
 
     await prisma.users.update({
         where: { id: user.id },
         data: {
-            ip_address: await enc_decrypt(ipAddress!, 'e'),
+            ip_address: await enc_decrypt(ipAddress, 'e'),
             last_login: new Date().toISOString()
         }
     })
@@ -56,7 +57,7 @@ const login = expressAsyncHandler(async (req: Request, res: Response) => {
     await genTokens(res, user.id)
 
     if (await enc_decrypt(user.ip_address!, 'd') !== ipAddress) {
-        isProd && await newLogin(user.email, user.username, userAgent!, ipAddress!)
+        isProd && await newLogin(user.email, user.username, userAgent!, ipAddress)
     }
 
     sendSuccess(res, StatusCodes.OK, {
