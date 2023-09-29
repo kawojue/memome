@@ -7,11 +7,12 @@ import { USER_REGEX } from '../../utils/RegExp'
 import welcome from '../../services/welcome.mail'
 import newLogin from '../../services/new-login.mail'
 import { enc_decrypt } from '../../helpers/enc_decrypt'
+import { getIpAddress } from '../../utils/getIpAddress'
+import expressAsyncHandler from 'express-async-handler'
 import connectModels from '../../helpers/connect-models'
 import genRandomString from '../../utils/genRandomString'
-const expressAsyncHanlder = require('express-async-handler')
 
-const githubAuthCallback = expressAsyncHanlder(async (req: Request, res: Response) => {
+const githubAuthCallback = expressAsyncHandler(async (req: Request, res: Response) => {
     const { code } = req.query
     const { CLIENT_URL, GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } = process.env
 
@@ -44,8 +45,8 @@ const githubAuthCallback = expressAsyncHanlder(async (req: Request, res: Respons
 
     const isProd = process.env.NODE_ENV === 'production'
 
+    const ipAddress: string = getIpAddress(req)
     const userAgent = req.headers['user-agent']
-    const ipAddress = req.socket.remoteAddress?.split(":")[3]
 
     let user = await prisma.users.findUnique({
         where: {
@@ -82,7 +83,7 @@ const githubAuthCallback = expressAsyncHanlder(async (req: Request, res: Respons
         },
         data: {
             last_login: new Date().toISOString(),
-            ip_address: await enc_decrypt(ipAddress!, 'e'),
+            ip_address: await enc_decrypt(ipAddress, 'e'),
         }
     })
 
