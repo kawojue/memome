@@ -1,14 +1,16 @@
 "use client"
-import { FC } from 'react'
 import Image from 'next/image'
 import Options from './Options'
+import { FC, useRef } from 'react'
+import html2Canvas from 'html2canvas'
 import download from '@/utils/download'
+import { questrial } from '@/public/fonts/f'
 import { BsDownload } from '@/public/icons/ico'
-import { prompt, questrial } from '@/public/fonts/f'
 import { expiryPeriod, getPeriod } from '@/utils/period'
 
 const Poll: FC<{ poll: MyPoll | undefined }> = ({ poll }) => {
     const titles = poll?.title?.split('\n')
+    const captureDivRef = useRef<HTMLDivElement>(null)
 
     const expiry = (): string => {
         const nowInSeconds = Math.floor(new Date().getTime() / 1000)
@@ -21,8 +23,24 @@ const Poll: FC<{ poll: MyPoll | undefined }> = ({ poll }) => {
         return expiryPeriod(poll?.expiry!)
     }
 
+    const downloadPollTemplate = async (id: string) => {
+        const divToCapture = await captureDivRef.current
+
+        if (!divToCapture) return
+
+        await html2Canvas(divToCapture)
+            .then((canvas) => {
+                const dataURL = canvas.toDataURL('image/png')
+                const downloadLink = document.createElement('a')
+                downloadLink.href = dataURL
+                downloadLink.download = `memome_${id}.png`
+                downloadLink.click()
+            })
+    }
+
     return (
         <section
+            ref={captureDivRef}
             className={`rounded-lg bg-clr-0 p-5 w-full`}
             style={{
                 position: `relative`,
@@ -78,10 +96,8 @@ const Poll: FC<{ poll: MyPoll | undefined }> = ({ poll }) => {
                 </article> : ''}
             <Options poll={poll} />
             <article className='w-full flex justify-between items-center'>
-                <div className={`${prompt.className} flex gap-0.5 text-xs absolute bottom-1 text-clr-15`}>
-                    <span>Created</span>
-                    <span>&#8226;</span>
-                    <span>{getPeriod(poll?.date!)}</span>
+                <div className={`${questrial.className} text-xs absolute bottom-1 text-clr-15`}>
+                    <span>Created &#8226; {getPeriod(poll?.date!)}</span>
                 </div>
                 {poll?.expiry &&
                     <div className='text-xs absolute top-1 right-2 text-clr-13'>
@@ -90,6 +106,13 @@ const Poll: FC<{ poll: MyPoll | undefined }> = ({ poll }) => {
                             <span>Expires &#8226; {expiry()}</span>
                         }
                     </div>
+                }
+                {(poll?.files && poll.files.length === 0) &&
+                    <button
+                        onClick={async () => await downloadPollTemplate(poll.id)}
+                        className='absolute bottom-3 right-4 text-base font-semibold text-black'>
+                        <BsDownload />
+                    </button>
                 }
             </article>
         </section>
