@@ -47,7 +47,7 @@ const Levels: FC<LevelProps> = ({ msgPoint, pollPoint }) => {
                             {level}
                         </span>
                         <span>&#8226;</span>
-                        <span class name='text-xs'>{point.toFixed(1)}</span>
+                        <span className='text-xs'>{point.toFixed(1)}</span>
                     </div>
                     <progress
                         title={`${point.toFixed(1)}`}
