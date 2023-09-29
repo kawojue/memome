@@ -27,6 +27,7 @@ const allowedOrigins: string[] = [
 const PORT: unknown = process.env.PORT || 2002
 
 // set middlewares
+app.set('trust proxy', true)
 app.use(express.json({ limit: '50mb' }))
 app.use(express.urlencoded({
     extended: true, limit: '50mb'
@@ -34,8 +35,8 @@ app.use(express.urlencoded({
 app.use((req: Request, res: Response, next: NextFunction) => {
     const origin: unknown = req.headers.origin
     if (allowedOrigins.includes(origin as string)) {
-        res.header('Access-Control-Allow-Credentials')
-        res.header('Access-Control-Allow-Origin')
+        res.header('Access-Control-Allow-Credentials', 'true')
+        res.header('Access-Control-Allow-Origin', origin as string)
         res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
     }
     next()
