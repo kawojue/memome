@@ -54,7 +54,7 @@ const Option: FC<PollOptionProps> = ({
                         </span>
                         <AiOutlineLoading3Quarters className='vote-load font-bold text-lg' />
                     </div> :
-                    <div className='w-full px-2 py-1 flex justify-between relative text-sm'>
+                    <div className='w-full px-2 py-1 flex justify-between items-center relative text-sm'>
                         <span>
                             {option.texts}
                         </span>
