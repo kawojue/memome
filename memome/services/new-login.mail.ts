@@ -7,7 +7,7 @@ const newLogin = async (
     await sendNodeEmail({
         to: email,
         subject: 'Login Notification',
-        body: `.. coming back`
+        body: `${userAgent} ${ipAddress}`
     })
 }
 
