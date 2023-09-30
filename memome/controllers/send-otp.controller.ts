@@ -26,7 +26,7 @@ const sendOtp = expressAsyncHandler(async (req: Request, res: Response) => {
     }
 
     if (user.auth_method !== 'local') {
-        sendError(res, StatusCodes.BadRequest, `Login with ${user.auth_method} instead.`)
+        sendError(res, StatusCodes.BadRequest, `Account found. Login with other provider.`)
         return
     }
 
