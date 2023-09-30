@@ -3,6 +3,8 @@ import prisma from '../prisma'
 import { Request, Response } from 'express'
 import StatusCodes from '../enums/StatusCodes'
 import welcome from '../services/welcome.mail'
+import { getIpAddress } from '../utils/getIpAddress'
+import { enc_decrypt } from '../helpers/enc_decrypt'
 import connectModels from '../helpers/connect-models'
 import genRandomString from '../utils/genRandomString'
 import expressAsyncHandler from 'express-async-handler'
@@ -53,13 +55,15 @@ const signup = expressAsyncHandler(async (req: Request, res: Response) => {
     }
 
     password = await bcrypt.hash(password, 10)
+    const ipAddress: string = getIpAddress(req)
 
     const newUser = await prisma.users.create({
         data: {
             email,
             password,
             username,
-            auth_method: 'local'
+            auth_method: 'local',
+            ip_address: await enc_decrypt(ipAddress, 'e')
         }
     })
 
