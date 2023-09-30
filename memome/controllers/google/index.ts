@@ -5,6 +5,7 @@ import genTokens from '../../utils/genTokens'
 import { USER_REGEX } from '../../utils/RegExp'
 import welcome from '../../services/welcome.mail'
 import newLogin from '../../services/new-login.mail'
+import { getIpAddress } from '../../utils/getIpAddress'
 import { enc_decrypt } from '../../helpers/enc_decrypt'
 import connectModels from '../../helpers/connect-models'
 import genRandomString from '../../utils/genRandomString'
@@ -27,7 +28,7 @@ const googleAuth = async (
         const isProd = process.env.NODE_ENV === 'production'
 
         const userAgent = req.headers['user-agent']
-        const ipAddress = req.socket.remoteAddress?.split(":")[3]
+        const ipAddress: string = getIpAddress(req)
 
         if (!user) {
             const usernameTaken = await prisma.users.findUnique({
@@ -58,7 +59,7 @@ const googleAuth = async (
             },
             data: {
                 last_login: new Date().toISOString(),
-                ip_address: await enc_decrypt(ipAddress!, 'e'),
+                ip_address: await enc_decrypt(ipAddress, 'e'),
             }
         })
 
