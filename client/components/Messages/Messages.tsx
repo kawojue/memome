@@ -57,6 +57,15 @@ const Messages: FC<TabProps> = ({ username }) => {
                     {totalMessages} Messages
                 </h3>
             </header>
+            <div className='w-full flex justify-center items-center'>
+                {fetching ?
+                    <LoaderThree /> :
+                    <button
+                        className={`${totalMessages > messages.length ? '': 'hidden'} ${prompt.className} mt-3 px-3 py-1.5 text-lg tracking-wider bg-clr-13 text-clr-0 w-fit rounded-full`}
+                        onClick={() => setPage((prev) => prev + 1)}>
+                        Load more
+                    </button>}
+            </div>
             <article className="w-full gap-7 place-items-center grid grid-cols-1 md:grid-cols-2">
                 {messages.map((message) => (
                     <section
@@ -71,15 +80,6 @@ const Messages: FC<TabProps> = ({ username }) => {
                     </section>
                 ))}
             </article>
-            <div className='w-full flex justify-center items-center'>
-                {fetching ?
-                    <LoaderThree /> :
-                    <button
-                        className={`${totalMessages > messages.length ? '': 'hidden'} ${prompt.className} mt-3 px-3 py-1.5 text-lg tracking-wider bg-clr-13 text-clr-0 w-fit rounded-full`}
-                        onClick={() => setPage((prev) => prev + 1)}>
-                        Load more
-                    </button>}
-            </div>
         </section>
     )
 }
