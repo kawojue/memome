@@ -36,7 +36,7 @@ const Messages: FC<TabProps> = ({ username }) => {
         ).then((res: AxiosResponse) => {
             setTotalMessages(res.data?.length)
             setIsAuthenticated(res.data?.isAuthenticated)
-            setMessages((prevMessages) => [...prevMessages, ...res.data?.messages])
+            setMessages((prevMessages) => [...res.data?.messages, ...prevMessages])
         }).finally(() => setFetching(false))
     }
 
