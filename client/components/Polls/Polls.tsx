@@ -54,6 +54,15 @@ const Messages: FC<TabProps> = ({ username }) => {
             <h3 className={`${poppins.className} text-left font-medium text-sm tracking-wide mb-3`}>
                 {totalPolls} Polls
             </h3>
+            <div className='w-full flex justify-center items-center'>
+                {fetching ?
+                    <LoaderThree /> :
+                    <button
+                        className={`${totalPolls > polls.length ? '' : 'hidden'} ${prompt.className} mt-1.5 mb-3 px-3 py-1.5 text-lg tracking-wider bg-clr-13 text-clr-0 w-fit rounded-full`}
+                        onClick={() => setPage((prev) => prev + 1)}>
+                        Load more
+                    </button>}
+            </div>
             <article className="w-full gap-9 place-items-center grid grid-cols-1">
                 {polls?.map((poll) => (
                     <section
@@ -80,15 +89,6 @@ const Messages: FC<TabProps> = ({ username }) => {
                     </section>
                 ))}
             </article>
-            <div className='w-full flex justify-center items-center'>
-                {fetching ?
-                    <LoaderThree /> :
-                    <button
-                        className={`${polls.length <= totalPolls && 'hidden'} ${prompt.className} mt-3 px-3 py-1.5 text-lg tracking-wider bg-clr-13 text-clr-0 w-fit rounded-full`}
-                        onClick={() => setPage((prev) => prev + 1)}>
-                        Load more
-                    </button>}
-            </div>
         </section>
     )
 }
