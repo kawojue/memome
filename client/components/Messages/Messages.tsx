@@ -57,11 +57,11 @@ const Messages: FC<TabProps> = ({ username }) => {
                     {totalMessages} Messages
                 </h3>
             </header>
-            <div className='w-full flex justify-center items-center'>
+            <div className='w-full flex justify-center items-center mt-1.5 mb-3'>
                 {fetching ?
                     <LoaderThree /> :
                     <button
-                        className={`${totalMessages > messages.length ? '': 'hidden'} ${prompt.className} mt-3 px-3 py-1.5 text-lg tracking-wider bg-clr-13 text-clr-0 w-fit rounded-full`}
+                        className={`${totalMessages > messages.length ? '': 'hidden'} ${prompt.className} px-3 py-1.5 text-lg tracking-wider bg-clr-13 text-clr-0 w-fit rounded-full`}
                         onClick={() => setPage((prev) => prev + 1)}>
                         Load more
                     </button>}
