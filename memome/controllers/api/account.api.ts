@@ -101,6 +101,11 @@ const editPswd = expressAsyncHandler(async (req: Request, res: Response) => {
         return
     }
 
+    if (pswd.length < 7) {
+        sendError(res, StatusCodes.BadRequest, 'Password too short.')
+        return
+    }
+
     const user = await prisma.users.findUnique({
         where: {
             id: userId
