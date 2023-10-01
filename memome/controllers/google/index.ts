@@ -19,8 +19,12 @@ const googleAuth = async (
 
         let user = await prisma.users.findFirst({
             where: {
-                email,
-                provider_id: profile.id
+                OR: [
+                    { email },
+                    {
+                        provider_id: profile.id
+                    }
+                ]
             }
         })
 

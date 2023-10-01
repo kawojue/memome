@@ -50,8 +50,12 @@ const githubAuthCallback = expressAsyncHandler(async (req: Request, res: Respons
 
     let user = await prisma.users.findFirst({
         where: {
-            email,
-            provider_id: String(userData.id)
+            OR: [
+                { email },
+                {
+                    provider_id: String(userData.id)
+                }
+            ]
         }
     })
 
