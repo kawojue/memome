@@ -26,7 +26,7 @@ router.post('/login', limit({
 }), login)
 router.post('/signup', signup)
 
-router.get('/logout', logout)
+router.post('/logout', logout)
 router.post('/refresh', refreshToken)
 
 
