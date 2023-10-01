@@ -8,12 +8,12 @@ const Levels: FC<LevelProps> = ({ msgPoint, pollPoint }) => {
     useEffect(() => {
         const tempData: TempLevel[] = [
             {
-                total: 800,
+                total: 275,
                 type: 'message',
                 point: msgPoint,
             },
             {
-                total: 2225,
+                total: 475,
                 type: 'poll',
                 point: pollPoint,
             },
