@@ -19,12 +19,9 @@ const googleAuth = async (
 
         let user = await prisma.users.findUnique({
             where: {
+                email,
                 provider_id: profile.id
             }
-        })
-
-        const findByEmail = await prisma.users.findUnique({
-            where: { email }
         })
 
         let username: string = email.split('@')[0]
@@ -34,7 +31,7 @@ const googleAuth = async (
         const userAgent = req.headers['user-agent']
         const ipAddress: string = getIpAddress(req)
 
-        if (!user || !findByEmail) {
+        if (!user) {
             const usernameTaken = await prisma.users.findUnique({
                 where: { username }
             })

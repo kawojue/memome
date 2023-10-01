@@ -50,15 +50,12 @@ const githubAuthCallback = expressAsyncHandler(async (req: Request, res: Respons
 
     let user = await prisma.users.findUnique({
         where: {
+            email,
             provider_id: String(userData.id)
         }
     })
 
-    const findByEmail = await prisma.users.findUnique({
-        where: { email }
-    })
-
-    if (!user || !findByEmail) {
+    if (!user) {
         const usernameTaken = await prisma.users.findUnique({
             where: { username }
         })
