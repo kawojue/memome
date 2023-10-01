@@ -1,10 +1,10 @@
-import { sendPlunkEmail } from '../helpers/sendEmail'
+import { sendNodeEmail } from '../helpers/sendEmail'
 
 const sendOTP = async (otp: string, email: string) => {
-    await sendPlunkEmail({
+    await sendNodeEmail({
         to: email,
         subject: 'One-time password.',
-        body: `.. coming back`
+        body: `<h3>${otp}<h3>`
     })
 }
 
