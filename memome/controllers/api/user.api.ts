@@ -58,10 +58,10 @@ const userProfile = expressAsyncHandler(async (req: Request, res: Response) => {
                                 increment: 1
                             },
                             msg_point: {
-                                increment: 0.15
+                                increment: 0.1
                             },
                             poll_point: {
-                                increment: 0.15
+                                increment: 0.1
                             }
                         }
                     })

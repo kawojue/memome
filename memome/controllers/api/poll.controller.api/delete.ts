@@ -66,7 +66,7 @@ const deletePoll = expressAsyncHandler(async (req: Request, res: Response) => {
         where: { userId },
         data: {
             poll_point: {
-                decrement: files.length > 0 ? 0.75 : 0.6
+                decrement: files.length > 0 ? 0.65 : 0.5
             }
         }
     })
