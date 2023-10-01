@@ -1,16 +1,16 @@
 import { sendNodeEmail } from '../helpers/sendEmail'
 
 const newLogin = async (
-    date: string,
-    email: string,
-    username: string,
-    userAgent: string,
-    ipAddress: string,
+  date: string,
+  email: string,
+  username: string,
+  userAgent: string,
+  ipAddress: string,
 ) => {
-    await sendNodeEmail({
-        to: email,
-        subject: 'Login Notification',
-        body: `
+  await sendNodeEmail({
+    to: email,
+    subject: 'Login Notification',
+    body: `
         <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
@@ -149,7 +149,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
     <tr>
       <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
 
-  <h1 class="v-text-align v-line-height v-font-size" style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 21px; font-weight: 400;">MemoMe<br />Your Ultimate Anonymous Communication Platform</h1>
+  <h1 class="v-text-align v-line-height v-font-size" style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 16px; font-weight: 400;">MemoMe<br />Your Ultimate Anonymous Communication Platform</h1>
 
       </td>
     </tr>
@@ -251,7 +251,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
 
 </html>
         `
-    })
+  })
 }
 
 export default newLogin
