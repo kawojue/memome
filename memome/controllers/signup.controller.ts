@@ -6,10 +6,10 @@ import welcome from '../services/welcome.mail'
 import { getIpAddress } from '../utils/getIpAddress'
 import { enc_decrypt } from '../helpers/enc_decrypt'
 import connectModels from '../helpers/connect-models'
-import genRandomString from '../utils/genRandomString'
 import expressAsyncHandler from 'express-async-handler'
 import { USER_REGEX, EMAIL_REGEX } from '../utils/RegExp'
 import { sendError, sendSuccess } from '../helpers/sendRes'
+import { generateUsername } from 'unique-username-generator'
 
 const signup = expressAsyncHandler(async (req: Request, res: Response) => {
     let { email, password, password2 } = req.body
@@ -51,7 +51,7 @@ const signup = expressAsyncHandler(async (req: Request, res: Response) => {
     })
 
     if (!USER_REGEX.test(username) || usernameTaken) {
-        username = genRandomString()
+        username = generateUsername("", 0, 32) // no delimiter, 0 to 32 max
     }
 
     password = await bcrypt.hash(password, 10)
