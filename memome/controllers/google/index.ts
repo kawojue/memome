@@ -8,7 +8,7 @@ import newLogin from '../../services/new-login.mail'
 import { getIpAddress } from '../../utils/getIpAddress'
 import { enc_decrypt } from '../../helpers/enc_decrypt'
 import connectModels from '../../helpers/connect-models'
-import genRandomString from '../../utils/genRandomString'
+import { generateUsername } from 'unique-username-generator'
 
 const googleAuth = async (
     req: Request, refreshToken: string,
@@ -23,6 +23,10 @@ const googleAuth = async (
             }
         })
 
+        const findByEmail = await prisma.users.findUnique({
+            where: { email }
+        })
+
         let username: string = email.split('@')[0]
 
         const isProd = process.env.NODE_ENV === 'production'
@@ -30,13 +34,13 @@ const googleAuth = async (
         const userAgent = req.headers['user-agent']
         const ipAddress: string = getIpAddress(req)
 
-        if (!user) {
+        if (!user || !findByEmail) {
             const usernameTaken = await prisma.users.findUnique({
                 where: { username }
             })
 
             if (usernameTaken || !USER_REGEX.test(username)) {
-                username = genRandomString()
+                username = generateUsername("", 0, 32) // no delimiter, 0 to 32 max
             }
 
             user = await prisma.users.create({
