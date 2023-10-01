@@ -10,7 +10,7 @@ import { enc_decrypt } from '../../helpers/enc_decrypt'
 import { getIpAddress } from '../../utils/getIpAddress'
 import expressAsyncHandler from 'express-async-handler'
 import connectModels from '../../helpers/connect-models'
-import genRandomString from '../../utils/genRandomString'
+import { generateUsername } from 'unique-username-generator'
 
 const githubAuthCallback = expressAsyncHandler(async (req: Request, res: Response) => {
     const { code } = req.query
@@ -54,13 +54,17 @@ const githubAuthCallback = expressAsyncHandler(async (req: Request, res: Respons
         }
     })
 
-    if (!user) {
+    const findByEmail = await prisma.users.findUnique({
+        where: { email }
+    })
+
+    if (!user || !findByEmail) {
         const usernameTaken = await prisma.users.findUnique({
             where: { username }
         })
 
         if (usernameTaken || !USER_REGEX.test(username)) {
-            username = genRandomString()
+            username = generateUsername("", 0, 32) // no delimiter, 0 to 32 max
         }
 
         user = await prisma.users.create({
