@@ -56,8 +56,16 @@ const login = expressAsyncHandler(async (req: Request, res: Response) => {
 
     await genTokens(res, user.id)
 
-    if (await enc_decrypt(user.ip_address!, 'd') !== ipAddress) {
-        isProd && await newLogin(user.email, user.username, userAgent!, ipAddress)
+    if (isProd) {
+        if (await enc_decrypt(user.ip_address!, 'd') !== ipAddress) {
+            await newLogin(
+                new Date().toUTCString(),
+                user.email,
+                user.username,
+                userAgent!,
+                ipAddress
+            )
+        }
     }
 
     sendSuccess(res, StatusCodes.OK, {
