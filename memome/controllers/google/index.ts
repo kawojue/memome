@@ -17,7 +17,7 @@ const googleAuth = async (
     try {
         const email: string = profile.emails![0].value
 
-        let user = await prisma.users.findUnique({
+        let user = await prisma.users.findFirst({
             where: {
                 email,
                 provider_id: profile.id
