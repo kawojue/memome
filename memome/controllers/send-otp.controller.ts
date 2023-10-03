@@ -31,7 +31,7 @@ const sendOtp = expressAsyncHandler(async (req: Request, res: Response) => {
     }
 
     if (user.totp_expiry) {
-        if (Date.now() > user.totp_expiry) {
+        if (Date.now() < user.totp_expiry) {
             sendError(res, StatusCodes.BadRequest, 'Request after 30 minutes.')
             return
         }
