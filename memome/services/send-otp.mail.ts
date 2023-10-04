@@ -192,9 +192,11 @@ table, td { color: #000000; } </style>
 <body>
 
 <div class="flex-container">
-  	${otp.split('').map((totp) => (
-            `<div>${totp}</div>`
-        ))}
+  	<div>${otp[0]}</div>
+  	<div>${otp[1]}</div>
+  	<div>${otp[2]}</div>
+  	<div>${otp[3]}</div>
+  	<div>${otp[4]}</div>
 </div>
 </body>
 </html>
