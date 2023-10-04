@@ -133,7 +133,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
   <tr>
     <td class="v-text-align" style="padding-right: 0px;padding-left: 0px;" align="center">
 
-      <img align="center" border="0" src="https://d15zb4m4p46ai4.cloudfront.net/Dist/logo-2.png" alt="" title="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 30%;max-width: 144px;" width="144"/>
+      <img align="center" border="0" src="https://d15zb4m4p46ai4.cloudfront.net/Dist/logo-1.png" alt="" title="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 30%;max-width: 144px;" width="144"/>
 
     </td>
   </tr>
