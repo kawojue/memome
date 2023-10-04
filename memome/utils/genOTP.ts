@@ -2,7 +2,7 @@ import { IGenOTP } from '../type'
 
 const generateOTP = (length: number = 5): IGenOTP => {
     let totp: string = ''
-    const digits: string = '0918273645'
+    const digits: string = '0123456789'
     for (let i = 0; i < length; i++) {
         totp += digits[Math.floor(Math.random() * length)]
     }

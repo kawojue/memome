@@ -180,7 +180,7 @@ table, td { color: #000000; } </style>
   justify-content: center;
 }
 
-.flex-container > div {
+.flex-container > span {
   background-color: rgb(16, 42, 66);
   margin: 10px;
   padding: 5px 10px 5px 10px;
@@ -192,11 +192,11 @@ table, td { color: #000000; } </style>
 <body>
 
 <div class="flex-container">
-  	<div>${otp[0]}</div>
-  	<div>${otp[1]}</div>
-  	<div>${otp[2]}</div>
-  	<div>${otp[3]}</div>
-  	<div>${otp[4]}</div>
+  	<span>${otp[0]}</span>
+  	<span>${otp[1]}</span>
+  	<span>${otp[2]}</span>
+  	<span>${otp[3]}</span>
+  	<span>${otp[4]}</span>
 </div>
 </body>
 </html>
@@ -214,7 +214,7 @@ table, td { color: #000000; } </style>
       <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
         
   <div style="font-family: 'Source Sans Pro',sans-serif; font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;">
-    <p style="line-height: 140%;">If did not request for this OTP, please ignore.</p>
+    <p style="line-height: 140%;">If you did not request for this OTP, please ignore.</p>
   </div>
 
       </td>
