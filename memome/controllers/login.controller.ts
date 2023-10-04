@@ -44,22 +44,26 @@ const login = expressAsyncHandler(async (req: Request, res: Response) => {
     const isProd: boolean = process.env.NODE_ENV === "production"
 
     const ipAddress: string = getIpAddress(req)
-    const userAgent = req.headers['user-agent']
+    const userAgent = req.headers['user-agent'] || ''
 
     await prisma.users.update({
         where: { id: user.id },
         data: {
-            ip_address: await enc_decrypt(ipAddress, 'e'),
-            last_login: new Date().toISOString()
+            last_login: new Date().toISOString(),
+            user_agent: await enc_decrypt(userAgent, 'e'),
         }
     })
 
     await genTokens(res, user.id)
 
     if (isProd) {
-        if (await enc_decrypt(user.ip_address!, 'd') !== ipAddress) {
+        if (await enc_decrypt(user.user_agent!, 'd') !== userAgent) {
             await newLogin(
-                new Date(new Date().setHours(new Date().getHours() + 1)).toUTCString(),
+                new Date(
+                    new Date().setHours(
+                        new Date().getHours() + 1
+                    )
+                ).toUTCString(),
                 user.email,
                 user.username,
                 userAgent!,
