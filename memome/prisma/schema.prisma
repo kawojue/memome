@@ -14,13 +14,13 @@ model Users {
     email          String     @unique
     password       String?
     totp           String?
-    totp_expiry    Int?
+    totp_expiry    String?
     email_verified Boolean    @default(false)
     created_at     DateTime   @default(now())
     updated_at     DateTime   @updatedAt
     last_login     String?
     last_logout    String?
-    ip_address     String?
+    user_agent     String?
     refresh_token  String?
     auth_method    AuthMethod
     Profile        Profiles?
