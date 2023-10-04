@@ -228,6 +228,17 @@ table, td { color: #000000; } @media (max-width: 480px) { #u_content_heading_2 .
   </div>
 </table>
 
+<table id="u_content_text_3" style="font-family:arial,helvetica,sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+  <tbody>
+    <tr>
+      <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
+        
+  <div class="v-text-align v-line-height v-font-size" style="font-family: 'Lato',sans-serif; font-size: 15px; line-height: 140%; text-align: left; word-wrap: break-word;">
+    <p style="line-height: 130%;"><strong>Unlock New Horizons with MemoMe Levels:</strong></p>
+<p style="line-height: 130%;">As you continue to engage with MemoMe, you'll notice your level increasing. This isn't just a number; it's a symbol of your dedication to our community</p>
+  </div>
+</table>
+
 <table style="font-family:arial,helvetica,sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
   <tbody>
     <tr>
