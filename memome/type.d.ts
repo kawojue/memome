@@ -4,7 +4,7 @@ export type OTPAction = 'denied' | 'granted'
 
 export interface IGenOTP {
     totp: string,
-    totp_expiry: number
+    totp_expiry: string
 }
 
 export interface ILimiter {
