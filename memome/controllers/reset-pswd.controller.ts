@@ -12,8 +12,7 @@ const resetOTP = async (email: string, action: OTPAction) => {
         data: {
             totp: null,
             totp_expiry: null,
-            refresh_token: action === 'denied' ? undefined : '',
-            email_verified: action === 'granted' ? true : undefined
+            refresh_token: action === 'denied' ? null : ''
         }
     })
 }
@@ -37,6 +36,11 @@ const verify = expressAsyncHandler(async (req: Request, res: Response) => {
         return
     }
 
+    if (!user.totp_expiry) {
+        sendError(res, StatusCodes.Unauthorized, 'Request for a new OTP.')
+        return
+    }
+
     if (user.auth_method !== "local") {
         sendError(res, StatusCodes.Unauthorized, 'Login with other providers.')
         return
@@ -52,8 +56,8 @@ const verify = expressAsyncHandler(async (req: Request, res: Response) => {
         return
     }
 
-    const now = Date.now()
-    const totp_expiry = user.totp_expiry || 0
+    const now = new Date().getTime()
+    const totp_expiry = new Date(user.totp_expiry).getTime()
 
     if (now > totp_expiry) {
         await resetOTP(user.email, 'denied')
@@ -69,6 +73,7 @@ const verify = expressAsyncHandler(async (req: Request, res: Response) => {
             password: await bcrypt.hash(password, 10)
         }
     })
+
     await resetOTP(user.email, 'granted')
 
     sendSuccess(res, StatusCodes.OK, {
