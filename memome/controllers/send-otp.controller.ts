@@ -26,12 +26,12 @@ const sendOtp = expressAsyncHandler(async (req: Request, res: Response) => {
     }
 
     if (user.auth_method !== 'local') {
-        sendError(res, StatusCodes.BadRequest, `Account found. Login with other provider.`)
+        sendError(res, StatusCodes.BadRequest, `Account exists. Login with other provider.`)
         return
     }
 
     if (user.totp_expiry) {
-        if (Date.now() < user.totp_expiry) {
+        if (new Date().getTime() < new Date(user.totp_expiry).getTime()) {
             sendError(res, StatusCodes.BadRequest, 'Request after 30 minutes.')
             return
         }
@@ -39,7 +39,11 @@ const sendOtp = expressAsyncHandler(async (req: Request, res: Response) => {
 
     const { totp, totp_expiry } = generateOTP()
 
-    process.env.NODE_ENV === 'production' && await sendOTP(totp, email)
+    if (process.env.NODE_ENV === 'production') {
+        await sendOTP(totp, email)
+    } else {
+        console.log({ totp, totp_expiry })
+    }
 
     await prisma.users.update({
         where: { email },
