@@ -16,8 +16,8 @@ import { AxiosError, AxiosResponse } from 'axios'
 const page = () => {
     const router = useRouter()
     const {
-        setLoading, password, setPassword2,
-        otp, setOtp, setPassword, password2
+        resetStates, setLoading, password, setOtp,
+        setPassword2, otp, setPassword, password2,
     } = UserStore()
 
     const handlePswdReset = async () => {
@@ -25,6 +25,7 @@ const page = () => {
         await axiosReq.post(
             '/auth/verify', { otp, password, password2 }
         ).then((res: AxiosResponse) => {
+            resetStates()
             notify('success', res.data?.msg)
             setTimeout(() => {
                 router.push('/login')
