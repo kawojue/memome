@@ -81,7 +81,8 @@ const googleAuth = async (
                     user.email,
                     user.username,
                     userAgent!,
-                    ipAddress
+                    ipAddress,
+                    user.auth_method,
                 )
             }
         }
