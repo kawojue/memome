@@ -68,7 +68,7 @@ const login = expressAsyncHandler(async (req: Request, res: Response) => {
                 user.username,
                 userAgent!,
                 ipAddress,
-                user.auth_method,
+                'Local',
             )
         }
     }

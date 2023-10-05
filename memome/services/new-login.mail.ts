@@ -197,7 +197,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
 <p style="line-height: 140%;">User Agent: <strong>${userAgent}</strong></p>
 <p style="line-height: 140%;"> </p>
 
-<p style="line-height: 140%;">Login Method: <strong>${auth_method.charAt(0).toUpperCase() + auth_method.slice(1)}</strong></p>
+<p style="line-height: 140%;">Login Provider: <strong>${auth_method}</strong></p>
   </div>
 
       </td>
