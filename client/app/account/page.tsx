@@ -20,8 +20,8 @@ const page = () => {
     } = useModalStore()
 
     const {
-        userId, setUserId, setPassword, setDisabled,
-        password, setPassword2, password2, disabled,
+        resetStates, setUserId, setPassword, setPassword2,
+        setDisabled, password, password2, disabled, userId,
     } = UserStore()
 
     const [pswd, setPswd] = useState<string>('')
@@ -34,6 +34,7 @@ const page = () => {
             '/auth/api/account/reset-pswd',
             { pswd, password, password2 }
         ).then((res: AxiosResponse) => {
+            resetStates()
             notify('success', res.data?.msg)
         }).catch((err: AxiosError) => throwError(err))
             .finally(() => setPswdLoading(false))
