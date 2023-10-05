@@ -26,7 +26,11 @@ const sendOtp = expressAsyncHandler(async (req: Request, res: Response) => {
     }
 
     if (user.auth_method !== 'local') {
-        sendError(res, StatusCodes.BadRequest, `Account exists. Login with other provider.`)
+        sendError(
+            res,
+            StatusCodes.BadRequest,
+            `Account exists. Login with ${user.auth_method} provider.`
+        )
         return
     }
 
@@ -41,8 +45,6 @@ const sendOtp = expressAsyncHandler(async (req: Request, res: Response) => {
 
     if (process.env.NODE_ENV === 'production') {
         await sendOTP(totp, email)
-    } else {
-        console.log({ totp, totp_expiry })
     }
 
     await prisma.users.update({
@@ -51,7 +53,7 @@ const sendOtp = expressAsyncHandler(async (req: Request, res: Response) => {
     })
 
     sendSuccess(res, StatusCodes.OK, {
-        msg: 'An OTP code has been sent to your email.'
+        msg: 'An OTP has been sent to your email.'
     })
 })
 
