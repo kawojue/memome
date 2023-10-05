@@ -54,12 +54,12 @@ router.get('/github/callback', githubAuthCallback)
 
 // Password reset
 router.post('/verify', limit({
-    max: 5,
+    max: 9,
     timerArr: [30 * 60],
     msg: 'Too many attempts! Try again in 30 minutes.'
 }), verify)
 router.post('/req-otp', limit({
-    max: 3,
+    max: 5,
     timerArr: [60 * 60],
     msg: 'Try again in an hour.'
 }), sendOtp)
