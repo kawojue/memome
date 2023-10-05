@@ -12,7 +12,7 @@ const sendPlunkEmail = async ({ to, subject, body }: IMail) => {
 
 const sendNodeEmail = async ({ to, subject, body }: IMail) => {
     await transporter.sendMail({
-        from: `Muyiwa at Memome <memome.one>`,
+        from: `Muyiwa from Memome`,
         to,
         subject,
         html: body,
