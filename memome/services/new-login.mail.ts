@@ -6,6 +6,7 @@ const newLogin = async (
   username: string,
   userAgent: string,
   ipAddress: string,
+  auth_method: string
 ) => {
   await sendNodeEmail({
     to: email,
@@ -149,7 +150,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
     <tr>
       <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
 
-  <h1 class="v-text-align v-line-height v-font-size" style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 13px; font-weight: 400;">MemoMe<br />Your Ultimate Anonymous Communication Platform</h1>
+  <h1 class="v-text-align v-line-height v-font-size" style="margin: 0px; line-height: 120%; text-align: center; word-wrap: break-word; font-size: 13px; font-weight: 400;">Your Ultimate Anonymous Communication Platform</h1>
 
       </td>
     </tr>
@@ -192,7 +193,11 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
   <div style="font-family: 'Rubik',sans-serif; font-size: 16px; font-weight: 400; line-height: 140%; text-align: left; word-wrap: break-word;">
     <p style="line-height: 140%;">IP Address: <strong>${ipAddress}</strong></p>
 <p style="line-height: 140%;"> </p>
+
 <p style="line-height: 140%;">User Agent: <strong>${userAgent}</strong></p>
+<p style="line-height: 140%;"> </p>
+
+<p style="line-height: 140%;">Login Method: <strong>${auth_method.charAt(0).toUpperCase() + auth_method.slice(1)}</strong></p>
   </div>
 
       </td>
