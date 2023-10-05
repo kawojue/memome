@@ -105,7 +105,8 @@ const githubAuthCallback = expressAsyncHandler(async (req: Request, res: Respons
                 user.email,
                 user.username,
                 userAgent!,
-                ipAddress
+                ipAddress,
+                user.auth_method,
             )
         }
     }
