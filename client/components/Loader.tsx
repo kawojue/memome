@@ -1,4 +1,7 @@
-const LoaderOne: React.FC = () => {
+"use client"
+import { FC } from 'react'
+
+const LoaderOne: FC = () => {
     return (
         <article className="loading-spin">
             <div className="spin-sector spin-sector-1"></div>
@@ -8,7 +11,7 @@ const LoaderOne: React.FC = () => {
     )
 }
 
-const LoaderTwo: React.FC = () => {
+const LoaderTwo: FC = () => {
     return (
         <main className="w-full h-full flex justify-center mt-20">
             <div className="lds-roller">
@@ -25,16 +28,8 @@ const LoaderTwo: React.FC = () => {
     )
 }
 
-const LoaderThree: React.FC = () => {
+const LoaderThree: FC = () => {
     return <div className="loader"></div>
 }
 
-const ProgressBarLoader: React.FC = () => {
-    return (
-        <div className="progress">
-            <div className="color"></div>
-        </div>
-    )
-}
-
-export { LoaderOne, LoaderTwo, LoaderThree, ProgressBarLoader }
+export { LoaderOne, LoaderTwo, LoaderThree }
