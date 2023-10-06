@@ -92,14 +92,14 @@ const page = () => {
                                         <Input
                                             type='text'
                                             value={userId}
-                                            maxLength={32}
+                                            maxLength={15}
                                             label='memome.one/'
                                             onChange={setUserId}
                                         />
                                     </div>
                                     <footer className='profile-footer'>
                                         <p className='text-clr-17 text-xs md:text-sm'>
-                                            Please use 32 characters at maximum.
+                                            Please use 15 characters at maximum.
                                         </p>
                                         <button
                                             className='save-btn-2'
