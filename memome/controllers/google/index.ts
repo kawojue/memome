@@ -41,7 +41,7 @@ const googleAuth = async (
             })
 
             if (usernameTaken || !USER_REGEX.test(username)) {
-                username = generateUsername("", 0, 32) // no delimiter, 0 to 32 max
+                username = generateUsername("", 0, 15) // no delimiter, 0 to 15 max
             }
 
             user = await prisma.users.create({
