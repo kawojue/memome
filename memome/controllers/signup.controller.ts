@@ -55,15 +55,13 @@ const signup = expressAsyncHandler(async (req: Request, res: Response) => {
     }
 
     password = await bcrypt.hash(password, 10)
-    const userAgent = req.headers['user-agent'] || ''
-
+    
     const newUser = await prisma.users.create({
         data: {
             email,
             password,
             username,
-            auth_method: 'local',
-            user_agent: await enc_decrypt(userAgent, 'e')
+            auth_method: 'local'
         }
     })
 
