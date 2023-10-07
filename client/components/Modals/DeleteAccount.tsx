@@ -47,6 +47,10 @@ const DeleteAccount: FC<ModalComponent> = ({ get, set, title, data }) => {
                 <input
                     type='text'
                     value={username}
+                    autoComplete='off'
+                    spellCheck='false'
+                    autoCorrect='false'
+                    autoCapitalize='false'
                     onChange={(e) => setUsername(e.target.value)}
                     className={`${prompt.className} rounded-md py-1.5 px-1 outline-none border-[2px] border-clr-5 tracking-wide focus:bg-clr-14`}
                 />
