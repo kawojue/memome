@@ -3,8 +3,8 @@ const formatNumber = (n: number): string => {
         return "0"
     }
 
-    const k = 1_000
-    const m = 1_000_000
+    const k = 1_000 as const
+    const m = 1_000_000 as const
 
     if (n >= m) {
         return (n / m).toFixed(1) + 'm'
@@ -18,8 +18,8 @@ const formatNumber = (n: number): string => {
 const formatSize = (size: number) => {
     let format = ''
 
-    const KB = 1_024
-    const MB = 1_024 * 1_024
+    const KB = 1_024 as const
+    const MB = 1_048_576 as const
 
     if (size >= MB) {
         format = `${(size / MB).toFixed(2)}MB`
