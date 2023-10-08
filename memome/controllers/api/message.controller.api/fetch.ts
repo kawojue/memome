@@ -42,7 +42,7 @@ const fetchMsg = expressAsyncHandler(async (req: Request, res: Response) => {
         skip: offset,
         take: limit,
         orderBy: {
-            date: 'desc
+            date: 'desc'
         }
     })
 
