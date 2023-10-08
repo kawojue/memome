@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken'
 import prisma from '../../../prisma'
 import { Request, Response } from 'express'
-import sortByDates from '../../../utils/sort'
 import StatusCodes from '../../../enums/StatusCodes'
 import expressAsyncHandler from 'express-async-handler'
 import { enc_decrypt } from '../../../helpers/enc_decrypt'
