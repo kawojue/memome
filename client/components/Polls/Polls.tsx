@@ -80,7 +80,7 @@ const Messages: FC<TabProps> = ({ username }) => {
                     </section>
                 ))}
             </article>
-            <div className='w-full flex justify-center items-center'>
+            <div className='w-full flex justify-center items-center mt-3 mb-1.5'>
                 {fetching ?
                     <LoaderThree /> :
                     <button
