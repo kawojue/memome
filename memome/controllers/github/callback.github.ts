@@ -65,7 +65,7 @@ const githubAuthCallback = expressAsyncHandler(async (req: Request, res: Respons
         })
 
         if (usernameTaken || !USER_REGEX.test(username)) {
-            username = generateUsername("", 0, 15) // no delimiter, 0 to 15 max
+            username = generateUsername("", 0, 9) // no delimiter
         }
 
         user = await prisma.users.create({
