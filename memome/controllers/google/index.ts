@@ -28,7 +28,7 @@ const googleAuth = async (
             }
         })
 
-        let username: string = email.split('@')[0]
+        let username: string = profile.displayName?.toLowerCase()
 
         const isProd = process.env.NODE_ENV === 'production'
 
@@ -41,7 +41,7 @@ const googleAuth = async (
             })
 
             if (usernameTaken || !USER_REGEX.test(username)) {
-                username = generateUsername("", 0, 15) // no delimiter, 0 to 15 max
+                username = generateUsername("", 0, 9) // no delimiter
             }
 
             user = await prisma.users.create({
