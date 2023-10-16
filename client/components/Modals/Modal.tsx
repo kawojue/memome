@@ -8,7 +8,7 @@ const Modal: FC<ModalProps> = ({ children, get, set }) => {
     return (
         <Transition appear show={get} as={Fragment}>
             <Dialog as="div"
-                className="relative z-[99999]"
+                className="relative z-[999]"
                 onClose={() => set(false)}>
                 <Transition.Child as={Fragment}
                     enter="ease-out duration-300"
