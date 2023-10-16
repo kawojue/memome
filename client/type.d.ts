@@ -4,9 +4,7 @@ type SignInType = 'home' | 'modal'
 
 type NotifyAction = 'error' | 'success'
 
-interface PathName {
-    pathName?: 'login' | 'signup' | 'main' | 'user'
-}
+interface PathName { pathName?: 'login' | 'signup' | 'main' | 'user' }
 
 interface AuthProps extends PathName {
     title: string
@@ -34,9 +32,7 @@ interface NavProps extends PathName {
     isAuthenticated: boolean
 }
 
-interface TabProps {
-    username: string
-}
+interface TabProps { username: string }
 
 interface LevelProps {
     msgPoint: number
@@ -51,9 +47,7 @@ type TempLevel = {
     type: LevelType
 }
 
-type ILevel = {
-    level: string
-} & TempLevel
+type ILevel = { level: string } & TempLevel
 
 type GenMsgType = 'normal' | 'all' | 'relationship' | 'nasty'
 
@@ -119,9 +113,9 @@ interface MessageStoreStates {
 interface MessageStates {
     id: string
     date: string
-    texts?: string | TrustedHTML
     private: boolean
     files: MsgFile[]
+    texts?: string | TrustedHTML
 }
 
 interface MsgFile {
@@ -137,22 +131,16 @@ interface ModalStates {
     loading: boolean
     avatarModal: boolean
     shareLinkModal: boolean
-    sharePollModal: boolean
     createPollModal: boolean
-    pollExpiryModal: boolean
     deleteAccountModal: boolean
     setLoading: (loading: boolean) => void
     setAvatarModal: (avatarModal: boolean) => void
     setShareLinkModal: (shareLinkModal: boolean) => void
-    setSharePollModal: (sharePollModal: boolean) => void
     setCreatePollModal: (createPollModal: boolean) => void
-    setPollExpiryModal: (pollExpiryModal: boolean) => void
     setDeleteAccountModal: (deleteAccountModal: boolean) => void
 }
 
-interface MediaUploadProps extends State<File[] | null> {
-    id: string
-}
+interface MediaUploadProps extends State<File[] | null> { id: string }
 
 interface Params {
     params: {
@@ -170,18 +158,14 @@ interface State<T> {
     set: (get: T) => void
 }
 
-interface ModalProps extends State<boolean> {
-    children: ReactNode
-}
+interface ModalProps extends State<boolean> { children: ReactNode }
 
 interface ModalComponent extends State<boolean> {
     data?: T
     title?: string
 }
 
-interface SwitchProps extends State<boolean> {
-    handler: () => Promise<void>
-}
+interface SwitchProps extends State<boolean> { handler: () => Promise<void> }
 
 type MyPageType = 'settings' | 'profile' | 'account'
 
@@ -296,4 +280,10 @@ interface MenuItem {
     Icon: IconType
     content: string
     handler: () => void
+}
+
+interface PollExpiryProps {
+    pollId: string
+    pollExpiryModal: boolean
+    setPollExpiryModal: (pollExpiryModal: boolean) => void
 }
