@@ -144,7 +144,7 @@ table, td { color: #000000; } @media (max-width: 480px) { #u_content_heading_2 .
     <tr>
       <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
 
-  <h1 class="v-text-align v-line-height v-font-size" style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 21px; font-weight: 400;">MemoMe<br />Your Ultimate Anonymous Communication Platform</h1>
+  <h1 class="v-text-align v-line-height v-font-size" style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 21px; font-weight: 400;">Your Ultimate Anonymous Communication Platform</h1>
 
       </td>
     </tr>
