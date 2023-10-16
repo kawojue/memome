@@ -1,10 +1,11 @@
+"use client"
 import Modal from './Modal'
 import Link from 'next/link'
 import { FC, useState } from 'react'
+import { poppins, prompt } from '@/public/fonts/f'
 import {
     AiOutlineTwitter, AiOutlineWhatsApp, AiFillCopy
 } from '@/public/icons/ico'
-import { poppins, prompt } from '@/public/fonts/f'
 import { copyToClipboard } from '@/utils/copyToClipboard'
 
 const Share: FC<ModalComponent> = ({ get, set, data, title }) => {
