@@ -3,14 +3,12 @@
 import Poll from './Poll'
 import PollMenu from './PollMenu'
 import axios from '@/app/api/axios'
-import Share from '../Modals/Share'
-import PollExpiry from './PollExpiry'
 import { LoaderThree } from '../Loader'
+import { usePoll } from '@/utils/store'
 import throwError from '@/utils/throwError'
 import { FC, useEffect, useState } from 'react'
 import { AxiosError, AxiosResponse } from 'axios'
 import { poppins, prompt } from '@/public/fonts/f'
-import { usePoll, useModalStore } from '@/utils/store'
 
 const Messages: FC<TabProps> = ({ username }) => {
     const limit = 5 as const
@@ -20,7 +18,6 @@ const Messages: FC<TabProps> = ({ username }) => {
     } = usePoll()
     const [page, setPage] = useState<number>(1)
     const [polls, setPolls] = useState<MyPoll[]>([])
-    const { sharePollModal, setSharePollModal } = useModalStore()
 
     const fetchPolls = async (): Promise<void> => {
         if (fetching) {
@@ -34,8 +31,8 @@ const Messages: FC<TabProps> = ({ username }) => {
             setIsOwner(res.data?.isAuthenticated)
             setPolls((prevPolls) => [...prevPolls, ...res.data?.polls])
         }).catch((err: AxiosError) => {
-            const statusCodes: unknown = err.response?.status
-            if (statusCodes === 403) {
+            const statusCode: unknown = err.response?.status
+            if (statusCode === 403) {
                 setIsAuthenticated(true)
             } else {
                 throwError(err)
@@ -54,22 +51,11 @@ const Messages: FC<TabProps> = ({ username }) => {
             <h3 className={`${poppins.className} text-left font-medium text-sm tracking-wide mb-3`}>
                 {totalPolls} Polls
             </h3>
-            <article className="w-full gap-9 place-items-center grid grid-cols-1">
+            <article className="w-full gap-9 grid grid-cols-1">
                 {polls?.map((poll) => (
                     <section
                         key={poll.id}
                         className='flex gap-2 w-full'>
-                        <>
-                            <Share
-                                get={sharePollModal}
-                                set={setSharePollModal}
-                                data={{
-                                    share: `Vote here: https://memome.one/poll/${poll.createdById}/${poll.id}`
-                                }}
-                                title='Share Poll'
-                            />
-                            <PollExpiry pollId={poll.id} />
-                        </>
                         <Poll poll={poll} />
                         <PollMenu
                             poll={poll}
