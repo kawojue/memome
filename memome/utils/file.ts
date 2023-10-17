@@ -16,8 +16,8 @@ const handleFile = (
     ...extensions: string[]
 ): any => {
     const size: number = file.size
-    const extension = file.originalname.split('.').pop()
-    const isAllowedExtension = extensions.includes(extension)
+    const extension: string = file.originalname.split('.').pop()
+    const isAllowedExtension: boolean = extensions.includes(extension)
 
     if (!isAllowedExtension) {
         sendError(
