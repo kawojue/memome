@@ -45,7 +45,7 @@ const Options: FC<{ poll: MyPoll | undefined }> = ({ poll }) => {
                 <span>View(s) &#8226; {formatNumber(poll?.views!)}</span>
                 {(poll?.active === false || expired()) &&
                     <span className='text-xs'>Final Results</span>}
-                <span>Total Vote(s) &#8226; {poll?.totalVotes}</span>
+                <span>Vote(s) &#8226; {poll?.totalVotes}</span>
             </div>
         </section>
     )
