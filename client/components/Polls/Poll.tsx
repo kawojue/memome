@@ -102,7 +102,7 @@ const Poll: FC<{ poll: MyPoll | undefined }> = ({ poll }) => {
                 {poll?.expiry &&
                     <div className='text-xs absolute top-1 right-2 text-clr-13'>
                         {expiry() === 'Expired' ?
-                            <span>Expired</span> :
+                            <span>Expired &#8226; {getPeriod(poll?.expiry)}</span> :
                             <span>Expires &#8226; {expiry()}</span>
                         }
                     </div>
