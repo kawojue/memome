@@ -4,8 +4,9 @@ import { sendError } from '../helpers/sendRes'
 import StatusCodes from '../enums/StatusCodes'
 
 /*
-mb - megabit * 1000
-MB - megabyte * 1024
+mb - megabit * 1,000,000
+MB - megabyte * 1,048,576
+MiB - mebibyte * 2^20
 */
 
 const handleFile = (
