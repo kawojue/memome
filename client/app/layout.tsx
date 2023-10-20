@@ -2,7 +2,6 @@ import './globals.css'
 import type { Metadata } from 'next'
 import IsAuth from '@/components/IsAuth'
 import { Toaster } from 'react-hot-toast'
-import { Analytics } from '@vercel/analytics/react'
 import QueryProvider from '@/components/QueryProvider'
 
 export const metadata: Metadata = {
@@ -21,7 +20,6 @@ export default function RootLayout({
         <Toaster
           position="top-center"
           reverseOrder={false} />
-        <Analytics />
         <QueryProvider>
           <IsAuth>
             {children}
