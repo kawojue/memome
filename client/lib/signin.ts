@@ -12,9 +12,7 @@ const handleSignIn = (
     )
 
     if (authUrlWindow) {
-        authUrlWindow.addEventListener('beforeunload', () => {
-            notify('success', 'Login successful.')
-        })
+        authUrlWindow.addEventListener('beforeunload', () => { // successful })
     } else {
         notify('error', 'Failed to login.')
     }
