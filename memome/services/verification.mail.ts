@@ -234,41 +234,49 @@ table, td { color: #000000; } @media (max-width: 480px) { #u_content_heading_2 .
   })
 }
 
-// const sendMail = async () => {
-//   const ids: string[] = []
+const sendMail = async () => {
+  const ids: string[] = []
 
-//   for (const idx of ids) {
-//     try {
-//       const account = await prisma.accounts.findUnique({
-//         where: {
-//           userId: idx
-//         },
-//         include: {
-//           user: {
-//             select: {
-//               email: true,
-//               username: true
-//             }
-//           }
-//         }
-//       })
+  for (const idx of ids) {
+    try {
+      const account = await prisma.accounts.findUnique({
+        where: {
+          userId: idx
+        },
+        include: {
+          user: {
+            select: {
+              email: true,
+              username: true
+            },
+          },
+        }
+      })
 
-//       await prisma.accounts.update({
-//         where: {
-//           userId: idx
-//         },
-//         data: {
-//           verified: true
-//         }
-//       })
+      if (!account) {
+        console.log(`Account not found - ${idx}`)
+      }
 
-//       await verification(account?.user.username!, account?.user.email!)
+      if (account?.verified === false) {
+        await prisma.accounts.update({
+          where: {
+            userId: idx
+          },
+          data: {
+            verified: true
+          }
+        })
 
-//       console.log('Success!')
-//     } catch (err) {
-//       console.log(err)
-//     }
-//   }
-// }
+        await verification(account?.user.username!, account?.user.email!)
 
-// (async () => await sendMail())()
+        console.log('Success!')
+      } else {
+        console.log(`${account?.user?.username} - Already verified.`)
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
+
+(async () => await sendMail())()
