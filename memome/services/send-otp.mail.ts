@@ -1,10 +1,10 @@
-import { sendNodeEmail } from '../helpers/sendEmail'
+import { sendPlunkEmail } from '../helpers/sendEmail'
 
 const sendOTP = async (otp: string, email: string) => {
-    await sendNodeEmail({
-        to: email,
-        subject: 'One-time Passcode.',
-        body: `<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  await sendPlunkEmail({
+    to: email,
+    subject: `One-time Passcode: ${otp}`,
+    body: `<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
 <!--[if gte mso 9]>
@@ -262,7 +262,7 @@ table, td { color: #000000; } </style>
 
 </html>
 `
-    })
+  })
 }
 
 export default sendOTP

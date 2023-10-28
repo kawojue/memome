@@ -1,4 +1,4 @@
-import { sendNodeEmail } from '../helpers/sendEmail'
+import { sendPlunkEmail } from '../helpers/sendEmail'
 
 const newLogin = async (
   date: string,
@@ -8,7 +8,7 @@ const newLogin = async (
   ipAddress: string,
   auth_method: string
 ) => {
-  await sendNodeEmail({
+  await sendPlunkEmail({
     to: email,
     subject: 'Login Notification',
     body: `

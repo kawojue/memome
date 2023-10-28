@@ -1,7 +1,7 @@
-import { sendNodeEmail } from '../helpers/sendEmail'
+import { sendPlunkEmail } from '../helpers/sendEmail'
 
 const welcome = async (username: string, email: string) => {
-  await sendNodeEmail({
+  await sendPlunkEmail({
     to: email,
     subject: 'Welcome to MemoMe',
     body: `<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

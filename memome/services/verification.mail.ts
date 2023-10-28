@@ -1,8 +1,8 @@
 import prisma from '../prisma'
-import { sendNodeEmail } from '../helpers/sendEmail'
+import { sendPlunkEmail } from '../helpers/sendEmail'
 
 const verification = async (username: string, email: string) => {
-  await sendNodeEmail({
+  await sendPlunkEmail({
     to: email,
     subject: 'Verification',
     body: `
