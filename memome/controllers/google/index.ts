@@ -28,7 +28,7 @@ const googleAuth = async (
             }
         })
 
-        let username: string = profile.displayName?.toLowerCase()
+        let username: string = profile.name?.givenName || profile.name?.middleName || profile.name?.familyName || email.split('@')[0]
 
         const isProd = process.env.NODE_ENV === 'production'
 
