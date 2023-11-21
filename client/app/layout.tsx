@@ -1,5 +1,4 @@
 import './globals.css'
-import ReactGA from 'react-ga4'
 import type { Metadata } from 'next'
 import IsAuth from '@/components/IsAuth'
 import { Toaster } from 'react-hot-toast'
@@ -9,8 +8,6 @@ export const metadata: Metadata = {
   title: 'MemoMe',
   description: 'An Ultimate Anonymous Platform for Secure Communication, Polls, and Content Control.',
 }
-
-ReactGA.initialize(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string)
 
 export default function RootLayout({
   children,

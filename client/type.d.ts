@@ -287,3 +287,51 @@ interface PollExpiryProps {
     pollExpiryModal: boolean
     setPollExpiryModal: (pollExpiryModal: boolean) => void
 }
+
+interface TypographyProps extends React.HTMLProps<HTMLHeadingElement> {
+    children?: React.ReactNode
+    className?: string
+}
+
+interface NavLinkProps {
+    href: string
+    children: ({ isActive }: { isActive: boolean }) => React.ReactNode
+}
+
+interface ShowWhenVisibleProps {
+    children?: React.ReactNode
+    animateClass?: string
+    className?: string
+    threshold?: number
+    onVisible?: () => void
+    onInvisible?: () => void
+}
+
+interface SvgsProps {
+    className?: string
+}
+
+interface FaqItemProps {
+    faq: {
+        question: string
+        answer: string
+    }
+}
+
+interface FaqsProps {
+    faqs: Array<{
+        question: string
+        answer: string
+    }>
+}
+
+interface ButtonProps {
+    children: ReactNode
+    className?: string
+    type?: 'button' | 'submit' | 'reset'
+}
+
+interface ToggleProps {
+    setOpened: (opened: boolean) => void
+    opened: boolean
+}

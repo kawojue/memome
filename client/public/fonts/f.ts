@@ -1,7 +1,6 @@
 import {
-    Inter, Poppins,
-    Questrial, Lato,
-    Prompt
+    Prompt, Montserrat_Alternates,
+    Inter, Poppins, Questrial, Lato,
 } from 'next/font/google'
 
 const questrial = Questrial({
@@ -29,8 +28,13 @@ const prompt = Prompt({
     subsets: ['latin']
 })
 
+const monst = Montserrat_Alternates({
+    weight: ['400', '500', '600', '700'],
+    subsets: ['latin'],
+})
+
 export {
+    prompt, monst,
     inter, poppins,
     lato, questrial,
-    prompt
 }
