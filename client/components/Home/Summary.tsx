@@ -4,9 +4,7 @@ import { H3, P } from '@/components/Typography'
 
 export default function Summary() {
     return (
-        <section
-            className={`${monst.className} pt-[30px] px-[38px] md:px-[72px] md:pt-[104px] bg-[#FAFAFA]`}
-        >
+        <section className={`${monst.className} pt-[30px] px-[38px] md:px-[72px] md:pt-[104px] bg-[#FAFAFA]`}>
             <div className='flex flex-col-reverse gap-[34px] md:flex md:flex-row md:gap-[46px] items-center justify-center'>
                 <figure>
                     <Image
