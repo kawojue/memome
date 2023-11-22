@@ -17,9 +17,7 @@ const FaqItem: FC<FaqItemProps> = ({ faq }) => {
                 {faq.question}
                 {isOpen ? (
                     <figure className='bg-memo rounded-full p-1 md:p-2'>
-                        <MinusIcon
-                            className={`transition-all duration-200 w-[14px] h-[14px] md:w-[24px] md:h-[24px]`}
-                        />
+                        <MinusIcon className={`transition-all duration-200 w-[14px] h-[14px] md:w-[24px] md:h-[24px]`} />
                     </figure>
                 ) : (
                     <figure className='border border-memo rounded-full p-1 md:p-2 '>
