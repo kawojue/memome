@@ -27,7 +27,7 @@ const NavBar: FC<NavProps> = ({
                 {isAuthenticated ?
                     <Link
                         href='/'
-                        className={`object-cover overflow-hidden w-14 h-10`}>
+                        className={`object-cover overflow-hidden w-24 h-14`}>
                         <Image
                             src='https://d15zb4m4p46ai4.cloudfront.net/Dist/logo.png'
                             alt='logo' priority
