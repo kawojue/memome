@@ -14,6 +14,7 @@ const sendMsg = expressAsyncHandler(async (req: Request, res: Response) => {
     let { texts } = req.body
     const { username } = req.params
 
+    texts = texts?.trim()
     let filesArr: any[] = []
     let files = req.files as any[] || []
 
