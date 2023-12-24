@@ -20,11 +20,9 @@ export function MobileDrawer({ opened, setOpened }: ToggleProps) {
                 {({ isActive }) => (
                   <div
                     onClick={() => setOpened(false)}
-                    className='flex items-center gap-1.5 group'
-                  >
-                    <div
-                      className={`bg-[#FF9400]/70 w-1 rounded-full transition-all duration-300  ${isActive ? 'h-6' : 'group-hover:h-6 h-1'
-                        }`}
+                    className='flex items-center gap-1.5 group'>
+                    <div className={`bg-[#FF9400]/70 w-1 rounded-full transition-all duration-300  ${isActive ? 'h-6' : 'group-hover:h-6 h-1'
+                      }`}
                     />
                     <div className={`font-semibold rounded-md p-2 transition-all duration-300 w-full max-w-md ${isActive ? 'bg-[#FF9400]' : 'hover:bg-[#FF9400]/70'
                       }`}>
@@ -35,7 +33,7 @@ export function MobileDrawer({ opened, setOpened }: ToggleProps) {
               </NavLink>
             </li>
           ))}
-          <form className='relative'>
+          {/* <form className='relative'>
             <figure className='absolute top-5 ml-r left-3 active:scale-95'>
               <Search />
             </figure>
@@ -48,10 +46,10 @@ export function MobileDrawer({ opened, setOpened }: ToggleProps) {
               value={search}
               className='outline-none w-[373px] rounded-[5px] border-solid border-[1.5px] border-[#ddd] pl-12 px-[30px] py-[18px] text-[#A9A9A9] text-base font-semibold'
             />
-          </form>
+          </form> */}
         </ul>
         <Link
-          href='/auth/login'
+          href='/login'
           onClick={() => setOpened(false)}
           className={`w-full rounded-md bg-[#FF9400] text-white font-bae flex justify-center items-center py-2 active:scale-95 transition-all duration-300 mt-3`}>
           Login

@@ -47,12 +47,9 @@ export default function Navbar() {
   return (
     <header
       ref={headerRef}
-      className={`${monst.className} w-full px-[33px] py-[21px] lg:py-[39px] lg:px-[71px] text-black border-b border-white/20`}
-    >
-      <nav
-        className={`  ${scrolled ? 'bg-memo/10 p-2' : ''
-          } container flex items-center justify-between px-3 mx-auto`}
-      >
+      className={`${monst.className} w-full px-[33px] py-[21px] lg:py-[39px] lg:px-[71px] text-black border-b border-white/20`}>
+      <nav className={`  ${scrolled ? 'bg-memo/10 p-2' : ''
+        } container flex items-center justify-between px-3 mx-auto`} >
         <div className={` flex flex-row items-center lg:gap-20`}>
           <Link href='/' onClick={() => setOpened(false)}>
             {/* <b className='text-xl font-black md:text-2xl'>
@@ -73,7 +70,7 @@ export default function Navbar() {
         </div>
         <ToggleButton setOpened={setOpened} opened={opened} />
         <div className='hidden md:flex flex-row gap-5 items-center'>
-          <form className='relative'>
+          {/* <form className='relative'>
             <figure className='absolute top-5 ml-r left-3 active:scale-95'>
               <Search />
             </figure>
@@ -86,7 +83,7 @@ export default function Navbar() {
               value={search}
               className='outline-none w-[230px] lg:w-[373px] rounded-[5px] border-solid border-[1.5px] border-[#ddd] pl-12 px-[30px] py-[18px] text-[#A9A9A9] text-base font-semibold'
             />
-          </form>
+          </form> */}
           <Link href='/login'>
             <div className='bg-[#FF9400] rounded-md md:px-6 md:py-4 lg:px-[60px] lg:py-4 text-white text-base font-semibold transition-all duration-300 active:scale-90 hover:scale-105'>
               Login
