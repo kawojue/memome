@@ -6,7 +6,7 @@ import { LargeLinks } from './LargeLinks'
 import { ToggleButton } from './ToggleBtn'
 import { Search } from '@/public/svgs/svg'
 import { MobileDrawer } from './MobileDrawer'
-import { useEffect, useRef, useState } from 'react'
+import { ChangeEvent, useEffect, useRef, useState } from 'react'
 
 export default function Navbar() {
   const [search, setSearch] = useState('')
@@ -14,7 +14,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const headerRef = useRef<HTMLDivElement | null>(null)
 
-  const handleChange = (e: any) => setSearch(e.target.value)
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)
 
   useEffect(() => {
     function handleClicks(e: MouseEvent): void {
