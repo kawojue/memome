@@ -97,11 +97,7 @@ const githubAuthCallback = expressAsyncHandler(async (req: Request, res: Respons
     if (isProd) {
         if (await enc_decrypt(user.user_agent!, 'd') !== userAgent) {
             await newLogin(
-                new Date(
-                    new Date().setHours(
-                        new Date().getHours() + 1
-                    )
-                ).toUTCString(),
+                new Date().toUTCString(),
                 user.email,
                 user.username,
                 userAgent!,

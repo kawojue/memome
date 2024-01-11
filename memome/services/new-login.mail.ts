@@ -177,7 +177,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
 
   <div style="font-family: 'Lato',sans-serif; font-size: 15px; line-height: 140%; text-align: left; word-wrap: break-word;">
-    <p style="line-height: 140%;">A successful login just occurred on your MemoMe profile at <strong>${date}</strong></p>
+    <p style="line-height: 140%;">A successful login just occurred on your MemoMe profile at <strong>${date} (UTC)</strong></p>
   </div>
 
       </td>
