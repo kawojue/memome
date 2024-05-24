@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'MemoMe',
   description: 'An Ultimate Anonymous Platform for Secure Communication, Polls, and Content Control.',
   openGraph: {
-    images: ['https://d15zb4m4p46ai4.cloudfront.net/Dist/logo.png']
+    images: ['https://d15zb4m4p46ai4.cloudfront.net/Dist/logo-1.png']
   }
 }
 
