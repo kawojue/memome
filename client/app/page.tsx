@@ -12,9 +12,7 @@ import { Hero, Faqs, Features, Summary } from '@/components/Home/'
 export default function Home() {
   return (
     <>
-      {/* <NavBar isAuthenticated={false} /> */}
       <Navbar />
-
       <main className={`${monst.className} mx-auto mt-[42px] md:mt-[100px] w-[100vw]`}>
         <section>
           {/* hero */}

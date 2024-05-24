@@ -3,10 +3,14 @@ import type { Metadata } from 'next'
 import IsAuth from '@/components/IsAuth'
 import { Toaster } from 'react-hot-toast'
 import QueryProvider from '@/components/QueryProvider'
+import Head from 'next/head'
 
 export const metadata: Metadata = {
   title: 'MemoMe',
   description: 'An Ultimate Anonymous Platform for Secure Communication, Polls, and Content Control.',
+  openGraph: {
+    images: ['https://d15zb4m4p46ai4.cloudfront.net/Dist/logo.png']
+  }
 }
 
 export default function RootLayout({
@@ -16,6 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <Head>
+        <meta property="og:image" content="https://d15zb4m4p46ai4.cloudfront.net/Dist/logo.png" />
+        <title>MemoMe</title>
+      </Head>
       <body className="min-h-screen">
         <Toaster
           position="top-center"

@@ -8,7 +8,6 @@ export default function Hero() {
                     <Image
                         src='https://d15zb4m4p46ai4.cloudfront.net/Dist/wave.png'
                         fetchPriority='high'
-                        // placeholder='blur'
                         priority
                         width={100}
                         height={100}
@@ -21,7 +20,6 @@ export default function Hero() {
                     <Image
                         src='https://d15zb4m4p46ai4.cloudfront.net/Dist/hero.png'
                         fetchPriority='high'
-                        // placeholder='blur'
                         priority
                         width={100}
                         height={100}
