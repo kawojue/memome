@@ -1,9 +1,9 @@
 import './globals.css'
+import Head from 'next/head'
 import type { Metadata } from 'next'
 import IsAuth from '@/components/IsAuth'
 import { Toaster } from 'react-hot-toast'
 import QueryProvider from '@/components/QueryProvider'
-import Head from 'next/head'
 
 export const metadata: Metadata = {
   title: 'MemoMe',
