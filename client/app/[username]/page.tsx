@@ -47,6 +47,11 @@ const page = ({ params: { username } }: Params) => {
 
     return (
         <>
+            <head>
+                <meta charSet="utf-8" />
+                <meta property="og:image" content={`${avatar_url ? avatar_url : 'https://d15zb4m4p46ai4.cloudfront.net/Dist/logo-1.png'}`} />
+                <title>Memome - @{name}</title>
+            </head>
             <NavBar
                 isAuthenticated={data?.authUser?.isAuthenticated}
                 data={avatar_url ? { avatar_url } : { username: name }}

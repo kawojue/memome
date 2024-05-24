@@ -54,10 +54,6 @@ const page = ({ params: { username } }: Params) => {
     })
 
     useEffect(() => {
-        document.title = `${username} | Send me anonymous messages`
-    }, [])
-
-    useEffect(() => {
         if (token) {
             refetch()
         } else {
@@ -112,7 +108,7 @@ const page = ({ params: { username } }: Params) => {
                     setProgress(percentage)
                 },
             }
-        ).then((res: AxiosResponse) => {
+        ).then(() => {
             resetStates()
             setSent(true)
             setTimeout(() => {
@@ -124,6 +120,11 @@ const page = ({ params: { username } }: Params) => {
 
     return (
         <>
+            <head>
+                <meta charSet="utf-8" />
+                <meta property="og:image" content={`${avatar_url ? avatar_url : 'https://d15zb4m4p46ai4.cloudfront.net/Dist/logo-1.png'}`} />
+                <title>{`${username} | Send me anonymous messages`}</title>
+            </head>
             <NavBar
                 isAuthenticated={data?.isAuthenticated}
                 data={avatar_url ? { avatar_url } : { username: name }}
