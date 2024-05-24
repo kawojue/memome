@@ -28,9 +28,9 @@ const PORT: unknown = process.env.PORT || 2002
 
 // set middlewares
 app.set('trust proxy', true)
-app.use(express.json({ limit: '50mb' }))
+app.use(express.json({ limit: 17 << 20 }))
 app.use(express.urlencoded({
-    extended: true, limit: '50mb'
+    extended: true, limit: 17 << 20
 }))
 app.use((req: Request, res: Response, next: NextFunction) => {
     const origin: unknown = req.headers.origin
