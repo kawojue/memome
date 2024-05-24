@@ -13,7 +13,7 @@ passport.use(
             scope: ['profile', 'email'],
             clientID: GOOGLE_CLIENT_ID!,
             clientSecret: GOOGLE_CLIENT_SECRET!,
-            callbackURL: '/auth/google/callback',
+            callbackURL: 'https://memome.online/auth/google/callback',
         },
         googleAuth
     )
