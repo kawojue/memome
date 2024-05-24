@@ -76,7 +76,7 @@ const PollMenu: FC<PollMenu> = ({ poll, polls, setPolls, isOwner }) => {
                 get={sharePollModal}
                 set={setSharePollModal}
                 data={{
-                    share: `Vote here: https://memome.one/poll/${poll?.createdById
+                    share: `Vote here: https://memome.online/poll/${poll?.createdById
                         }/${poll?.id}`
                 }}
                 title='Share Poll'

@@ -93,7 +93,7 @@ const page = () => {
                                             type='text'
                                             value={userId}
                                             maxLength={15}
-                                            label='memome.one/'
+                                            label='memome.online/'
                                             onChange={setUserId}
                                         />
                                     </div>

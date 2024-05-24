@@ -211,7 +211,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
 
   <div style="font-family: 'Lato',sans-serif; font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;">
-    <p style="line-height: 140%;">If you did not initiate this login, please visit, <strong><a rel="noopener" href="https://memome.one/password/verify" target="_blank">password reset</a></strong> to reset your password.</p>
+    <p style="line-height: 140%;">If you did not initiate this login, please visit, <strong><a rel="noopener" href="https://memome.online/password/verify" target="_blank">password reset</a></strong> to reset your password.</p>
   </div>
 
       </td>

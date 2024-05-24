@@ -48,7 +48,7 @@ const refreshToken = expressAsyncHandler(async (req: Request, res: Response) => 
                 )
 
                 res.cookie('access_token', access_token, {
-                    domain: isProd ? 'memome.one' : undefined,
+                    domain: isProd ? 'memome.online' : undefined,
                     secure: isProd,
                     sameSite: isProd ? 'none' : 'strict',
                     maxAge: 2 * 60 * 60 * 1000,

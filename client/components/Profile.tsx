@@ -53,7 +53,7 @@ const Profile: FC<IProfile> = ({ user, pathName, username }) => {
                 get={shareLinkModal}
                 set={setShareLinkModal}
                 data={{
-                    share: `Please, send me anonymous messages on https://memome.one/anon/${user?.username}`,
+                    share: `Please, send me anonymous messages on https://memome.online/anon/${user?.username}`,
                 }}
                 title='Share the link with your Comrades.'
             />

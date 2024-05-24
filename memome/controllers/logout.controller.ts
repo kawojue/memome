@@ -9,7 +9,7 @@ const clear = (req: Request, res: Response) => {
     const cookieNames = Object.keys(req.cookies)
     for (const cookie of cookieNames) {
         res.clearCookie(cookie, {
-            domain: isProd ? 'memome.one' : undefined,
+            domain: isProd ? 'memome.online' : undefined,
             secure: isProd,
             sameSite: isProd ? 'none' : 'strict',
         })
