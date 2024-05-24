@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <Head>
-        <meta property="og:image" content="https://d15zb4m4p46ai4.cloudfront.net/Dist/logo.png" />
+        <meta property="og:image" content="https://d15zb4m4p46ai4.cloudfront.net/Dist/logo-1.png" />
         <title>MemoMe</title>
       </Head>
       <body className="min-h-screen">
