@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        memo: "#FF9400",
+        // memo: "#FF9400",
         "clr-0": "#FFFFFF",
         "clr-1": "#FF9400",
         "clr-2": "#FBA42D",
